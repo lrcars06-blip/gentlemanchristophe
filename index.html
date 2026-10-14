@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<!--
+  DÉMÉNAGEMENTS CHRISTOPHE : notes d'intégration (Claude Code)
+  1. IMAGES : les 21 fichiers .webp (1 Mo au total contre 5,7 Mo) sont à la racine, à côté de ce fichier.
+     Si un fichier manque, chaque <img> bascule automatiquement sur l'URL d'origine (attribut data-fb).
+  2. FORMULAIRES : renseigner data-endpoint sur #contactForm et #invForm (Formspree ou route API, POST JSON
+     {_subject,email,message}). Sans endpoint, ouverture d'un mailto.
+  3. SEO, À FAIRE AVANT LA BASCULE DU DOMAINE : l'ancien site a 13 URLs indexées. En one-page, poser ces 301 :
+       /demenagement/                                   -> /#demenagement
+       /demenagement-dentreprise-ou-dadministration/    -> /#demenagement
+       /demenagement-international-et-dom-tom/          -> /#international
+       /materiel-et-camions/                            -> /#materiel
+       /visite-technique-et-devis/                      -> /#devis
+       /garde-meubles/                                  -> /#garde-meubles
+       /piano-coffre-fort-billard-voiture/              -> /#objets-lourds
+       /location-monte-meubles/                         -> /#monte-meubles
+       /boutique/ -> /#boutique   /contact/ et /plan-dacces/ -> /#contact   /inventaire.html -> /#inventaire
+       /norme-iso/ -> /#iso       /service/ -> /#services                  /avis/ -> /#avis
+     Pour conserver le positionnement sur « garde meubles reims », « monte meubles reims », « déménagement piano reims »,
+     la bonne cible en Next.js est une route par <article class="metier"> et par grande section, avec ces mêmes 301 vers les routes.
+  4. Mentions légales et politique de confidentialité pointent encore vers l'ancien WordPress : à recréer avant sa coupure.
+-->
+<html lang="fr" class="intro-on">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Déménagements Christophe | Déménageurs à Reims depuis plus de 60 ans</title>
+<meta name="description" content="Déménagements Christophe, Les Gentlemen du Déménagement à Reims : particuliers, entreprises, international et DOM-TOM, garde-meubles, self-stockage, monte-meubles, piano et coffre-fort. Certifié ISO 9001 et 14001. Devis gratuit : 03 26 85 16 18.">
+<link rel="canonical" href="https://www.christophe-demenagements.com/">
+<meta property="og:title" content="Déménagements Christophe | Déménageurs à Reims">
+<meta property="og:description" content="Plus de 60 ans de déménagement à Reims. Certifié ISO 9001 et 14001. Meilleur Gentlemen et service qualité France 2023-2024.">
+<meta property="og:image" content="https://www.christophe-demenagements.com/wp-content/uploads/2024/12/demenagement-maisons-reims.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 24'%3E%3Crect x='1' y='3' width='20' height='13' rx='2' fill='%23E2231A'/%3E%3Cpath d='M22 7h6l5 5v4H22z' fill='%2312295B'/%3E%3Ccircle cx='8' cy='18' r='4' fill='%2312295B'/%3E%3Ccircle cx='26' cy='18' r='4' fill='%2312295B'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#12295B">
+<meta name="format-detection" content="telephone=no">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.christophe-demenagements.com/">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<script>/* image locale absente : bascule sur l'URL d'origine, puis masquage en dernier recours */
+document.addEventListener('error',function(e){var i=e.target;if(!i||i.tagName!=='IMG')return;if(i.dataset.fb){var u=i.dataset.fb;delete i.dataset.fb;i.src=u}else{i.style.display='none'}},true);</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
+<noscript><style>#intro{display:none!important}html.intro-on{overflow:auto!important}</style></noscript>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"MovingCompany","@id":"https://www.christophe-demenagements.com/#entreprise","name":"Déménagements Christophe","legalName":"SAS Lorris CHRISTOPHE","url":"https://www.christophe-demenagements.com/","image":"https://www.christophe-demenagements.com/wp-content/uploads/2024/12/demenagement-maisons-reims.jpg","telephone":"+33326851618","faxNumber":"+33326364474","email":"contact@christophe-demenagements.com","vatID":"FR36382038388","award":"Meilleur Gentlemen et service qualité France 2023-2024","memberOf":{"@type":"Organization","name":"Les Gentlemen du Déménagement","url":"https://www.gentlemen-demenagement.com/"},"address":{"@type":"PostalAddress","streetAddress":"11 rue de la Neuvillette","postalCode":"51370","addressLocality":"Saint-Brice-Courcelles","addressRegion":"Marne","addressCountry":"FR"},"geo":{"@type":"GeoCoordinates","latitude":49.2674,"longitude":3.9914},"hasMap":"https://www.google.com/maps?cid=13774131934720966700","areaServed":[{"@type":"City","name":"Reims"},{"@type":"AdministrativeArea","name":"Marne"},{"@type":"Country","name":"France"}],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Prestations de déménagement","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Déménagement de particulier"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Déménagement d'entreprise ou d'administration"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Déménagement international et DOM-TOM"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Garde-meubles et self-stockage à Reims"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Transport de piano, coffre-fort, billard, voiture"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Location de monte-meubles avec moniteur"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Vente de cartons et matériel d'emballage"}}]}}
+</script>
+<style>
+:root{
+  --navy:#12295B; --navy-deep:#0B1A3D; --red:#E2231A; --red-dark:#B81A13;
+  --paper:#F5F6F8; --white:#fff; --ink:#16203A; --muted:#5B6579; --line:#D9DEE8;
+  --kraft:#C9A06A; --asphalt:#262E44; --sky:#D6E6F7;
+  --wrap:1240px; --pad:clamp(20px,4vw,48px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%}
+html.intro-on{overflow:hidden}
+body{font-family:"Archivo",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;font-size:17px;line-height:1.6;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+ul,ol{list-style:none}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--red);outline-offset:3px;border-radius:4px}
+.wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:var(--pad)}
+h1,h2,h3{font-stretch:125%;font-weight:800;line-height:1.04;letter-spacing:-.02em;color:var(--navy)}
+h2{font-size:clamp(1.9rem,3.3vw,2.8rem);max-width:20ch;overflow-wrap:break-word}
+h3{font-size:clamp(1.15rem,1.7vw,1.4rem);letter-spacing:-.01em;line-height:1.2}
+p{max-width:68ch}
+.lead{font-size:clamp(1.1rem,1.5vw,1.3rem);line-height:1.5;color:var(--ink)}
+.muted{color:var(--muted)}
+.btn{display:inline-flex;align-items:center;gap:.6em;padding:.95em 1.5em;border-radius:999px;font-weight:700;text-decoration:none;border:2px solid transparent;transition:background .2s,color .2s,border-color .2s;font-stretch:105%}
+.btn-red{background:var(--red);color:#fff}.btn-red:hover{background:var(--red-dark)}
+.btn-line{border-color:var(--navy);color:var(--navy)}.btn-line:hover{background:var(--navy);color:#fff}
+.btn-white{background:#fff;color:var(--navy)}.btn-white:hover{background:var(--sky)}
+.road{height:6px;background:repeating-linear-gradient(90deg,var(--navy) 0 38px,transparent 38px 64px);opacity:.18;border:0}
+
+/* ---------- INTRO ---------- */
+#intro{position:fixed;inset:0;z-index:1000;display:flex;flex-direction:column;background:linear-gradient(#BCD8F4 0%,#E6F1FB 62%,#F3F8FD 100%);overflow:hidden}
+#intro .top{flex:1 1 auto;min-height:110px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:18px var(--pad) 0;gap:10px}
+.wordmark{display:inline-flex;flex-direction:column;line-height:.9;color:var(--red);text-decoration:none;font-weight:900}
+.wordmark small{font-size:.42em;letter-spacing:.06em;font-stretch:110%;font-weight:800}
+.wordmark span{font-size:1em;font-stretch:112%;letter-spacing:-.03em}
+#intro .wordmark{font-size:clamp(26px,3.4vw,44px)}
+#caption{transition:opacity .18s,transform .18s;font-stretch:125%;font-weight:800;font-size:clamp(1.25rem,3.2vw,2.6rem);color:var(--navy);letter-spacing:-.02em;line-height:1.1;min-height:1.2em}
+#caption.swap{opacity:0;transform:translateY(-8px)}
+#scene{opacity:0;width:100%;flex:1 1 auto;min-height:0;max-height:62vh;display:block}
+#intro .bottom{flex:0 0 auto;background:var(--asphalt);color:#fff;padding:14px var(--pad) 22px;display:flex;flex-direction:column;align-items:center;gap:6px}
+#route{width:min(760px,100%);height:auto;overflow:visible}
+#route .ms{fill:#fff;stroke:#262E44;stroke-width:3;transition:fill .3s}
+#route .ms.done,#route .ms.on{fill:#E2231A}
+#route .mn{font-size:11px;font-weight:800;fill:#262E44;text-anchor:middle;pointer-events:none}
+#route .done+.mn,#route .on+.mn{fill:#fff}
+#steps{list-style:none;position:relative;width:min(760px,100%);height:1.3em;font-size:clamp(.68rem,1.35vw,.95rem);font-weight:600;font-stretch:90%;counter-reset:s;margin-top:2px}
+#steps li{counter-increment:s;position:absolute;top:0;transform:translateX(-50%);opacity:.45;transition:opacity .3s,color .3s;white-space:nowrap}
+#steps li::before{content:attr(data-n) ". "}
+#steps li.on{opacity:1;color:#fff}
+#steps li.done{opacity:.8}
+#steps li:nth-child(1){left:6.7%;transform:none}#steps li:nth-child(2){left:35.5%}#steps li:nth-child(3){left:64.5%}#steps li:nth-child(4){left:93.3%;transform:translateX(-100%)}
+@media (max-width:640px){#steps{font-size:.95rem;text-align:center}#steps li{display:none;position:static;transform:none!important}#steps li.on{display:block}}
+#intro{cursor:pointer}
+#skip{position:absolute;right:var(--pad);top:18px;z-index:5;background:rgba(255,255,255,.85);border:1px solid var(--line);color:var(--navy);padding:.55em 1.1em;border-radius:999px;font-weight:700;font-size:.9rem}
+#skip:hover{background:#fff}
+#skip:focus-visible{outline:2px solid var(--navy);outline-offset:2px}
+#curtain{position:absolute;inset:0;background:var(--navy);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;visibility:hidden;z-index:4;text-align:center;padding:var(--pad)}
+#curtain .wordmark{font-size:clamp(44px,9vw,128px);color:#fff}
+#curtain .wordmark small{color:var(--red)}
+#curtain p{color:#C8D3EA;font-size:clamp(1rem,1.6vw,1.3rem);font-stretch:110%;font-weight:600}
+#scene text{font-family:"Archivo",Arial,sans-serif}
+.leg{stroke:var(--navy);stroke-width:10;stroke-linecap:round}
+.arm{stroke:#fff;stroke-width:8;stroke-linecap:round}
+.torso{fill:#fff;stroke:#C9D2E3;stroke-width:1.5}
+.head{fill:#F0C9A4}.brim,.crown{fill:#EAD79C}.band,.tie{fill:var(--red)}
+@media (max-aspect-ratio:4/5){#scene{max-height:none}#intro .top{flex:0 0 auto;justify-content:flex-start;padding-top:84px}}
+
+/* ---------- HEADER ---------- */
+#progress{position:fixed;left:0;top:0;height:4px;width:100%;z-index:60;pointer-events:none}
+#progress i{position:absolute;inset:0;background:var(--red);transform:scaleX(0);transform-origin:0 50%}
+#progress svg{position:absolute;left:-28px;top:-7px;width:34px;height:20px}
+header.site{position:sticky;top:0;z-index:50;background:rgba(245,246,248,.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;gap:24px;height:76px}
+header.site .wordmark{font-size:28px;margin-right:auto}
+nav.main ul{display:flex;gap:clamp(12px,1.8vw,26px);font-weight:600;font-size:.95rem;font-stretch:95%}
+nav.main a{white-space:nowrap;text-decoration:none;color:var(--navy);padding:6px 0;border-bottom:2px solid transparent}
+nav.main a:hover{border-color:var(--red)}
+.tel{font-weight:800;font-stretch:110%;white-space:nowrap}
+#burger{display:none;background:none;border:0;width:44px;height:44px;position:relative}
+#burger i,#burger i::before,#burger i::after{content:"";position:absolute;left:10px;right:10px;height:3px;background:var(--navy);border-radius:2px;transition:transform .25s,opacity .2s}
+#burger i{top:21px}#burger i::before{left:0;right:0;top:-8px}#burger i::after{left:0;right:0;top:8px}
+#burger[aria-expanded=true] i{background:transparent}
+#burger[aria-expanded=true] i::before{transform:translateY(8px) rotate(45deg)}
+#burger[aria-expanded=true] i::after{transform:translateY(-8px) rotate(-45deg)}
+@media (max-width:1180px){
+  #burger{display:block}
+  nav.main{position:fixed;inset:76px 0 auto 0;background:var(--paper);border-bottom:1px solid var(--line);padding:12px var(--pad) 28px;display:none}
+  nav.main.open{display:block}
+  nav.main ul{flex-direction:column;gap:0;font-size:1.15rem}
+  nav.main a{display:block;padding:14px 0;border-bottom:1px solid var(--line)}
+  header.site .tel span{display:none}
+}
+
+/* ---------- HERO ---------- */
+.hero{padding:clamp(40px,7vw,96px) 0 0}
+.hero h1{font-size:clamp(2.7rem,9.2vw,8.4rem);font-weight:900;line-height:.9;letter-spacing:-.04em}
+.hero h1 em{display:block;font-style:normal;font-size:.42em;letter-spacing:.01em;color:var(--red);line-height:1.1;font-stretch:115%}
+.hero h1 b{color:var(--red);font-weight:900}
+.hero-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(24px,5vw,72px);align-items:start;margin-top:clamp(24px,3.5vw,48px)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.proofs{display:grid;grid-template-columns:1fr 1fr;gap:0;border-top:2px solid var(--navy)}
+.proofs li{padding:14px 14px 14px 0;border-bottom:1px solid var(--line);font-size:.95rem;line-height:1.35}
+.proofs strong{display:block;font-stretch:115%;font-weight:800;color:var(--navy);font-size:1.05rem}
+.hero-photo{margin-top:clamp(36px,5vw,72px);position:relative;background:var(--navy)}
+.hero-photo img{width:100%;height:clamp(200px,30vw,420px);object-fit:cover}
+.hero-photo::before{content:"";position:absolute;inset:0 0 auto 0;height:28px;background:var(--navy);clip-path:polygon(0 0,100% 0,100% 30%,0 100%)}
+#replay{background:none;border:0;color:var(--muted);text-decoration:underline;font-size:.9rem;margin-top:18px}
+#replay:hover{color:var(--red)}
+@media (max-width:860px){.hero-grid{grid-template-columns:1fr}}
+
+/* ---------- SECTIONS ---------- */
+section.block{padding:clamp(64px,9vw,128px) 0}
+.split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,6vw,96px);align-items:start}
+.split>div>*+*{margin-top:1.1em}
+@media (max-width:900px){.split{grid-template-columns:1fr}}
+.quote{border-left:5px solid var(--red);padding:6px 0 6px 22px;font-size:1.12rem;font-weight:500;color:var(--navy)}
+.award{background:var(--navy);color:#fff;padding:clamp(24px,3vw,40px);padding-right:clamp(24px,11vw,150px);margin-top:36px!important;position:relative;overflow:hidden}
+.award h3{color:#fff;font-size:clamp(1.3rem,2.2vw,1.9rem)}
+.award p{color:#D5DDF0;margin-top:12px}
+.award::after{content:"";position:absolute;right:-64px;bottom:-64px;width:170px;height:170px;border-radius:50%;border:26px solid var(--red);opacity:.9}
+.ticks li{padding:12px 0 12px 38px;border-bottom:1px solid var(--line);position:relative;font-weight:600}
+.ticks li::before{content:"";position:absolute;left:4px;top:17px;width:16px;height:9px;border-left:4px solid var(--red);border-bottom:4px solid var(--red);transform:rotate(-45deg)}
+.photos{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:clamp(36px,5vw,64px)}
+.photos img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;background:var(--line)}
+.photos.g4{grid-template-columns:repeat(4,1fr)}
+@media (max-width:700px){.photos,.photos.g4{grid-template-columns:repeat(2,1fr)}}
+
+.navy{background:var(--navy);color:#E6EBF7}
+.navy h2,.navy h3{color:#fff}
+.navy .muted{color:#AEBBD8}
+
+/* voyages */
+.voyages{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:40px;counter-reset:v;border-top:2px solid var(--navy)}
+.voyages li{padding:22px 24px 26px 0;border-bottom:1px solid var(--line)}
+.voyages li+li{padding-left:24px;border-left:1px solid var(--line)}
+@media (max-width:800px){.voyages{grid-template-columns:1fr}.voyages li+li{padding-left:0;border-left:0}}
+
+/* formules */
+.tabs{display:inline-flex;border:2px solid var(--navy);border-radius:999px;padding:4px;margin:48px 0 8px;max-width:100%}
+.tabs button{border:0;background:none;padding:.7em 1.3em;border-radius:999px;font-weight:700;color:var(--navy);font-size:.98rem}
+.tabs button[aria-selected=true]{background:var(--navy);color:#fff}
+.formules{display:grid;grid-template-columns:repeat(4,1fr);margin-top:28px;border-top:2px solid var(--navy)}
+.formules.three{grid-template-columns:repeat(3,1fr)}
+.formule{padding:26px 22px 30px 0;border-bottom:1px solid var(--line)}
+.formule+.formule{padding-left:22px;border-left:1px solid var(--line)}
+.formule h3{font-size:1.45rem}
+.gauge{height:8px;background:var(--line);margin:14px 0 6px;position:relative}
+.gauge i{position:absolute;inset:0 auto 0 0;background:var(--red)}
+.gauge+small{color:var(--muted);font-size:.8rem}
+.formule h4{font-size:.95rem;font-weight:800;color:var(--navy);margin:20px 0 8px;font-stretch:110%}
+.formule h4.you{color:var(--muted)}
+.formule li{font-size:.95rem;line-height:1.4;padding:7px 0 7px 18px;position:relative}
+.formule li::before{content:"";position:absolute;left:0;top:14px;width:8px;height:8px;background:var(--red)}
+.formule h4.you+ul li::before{background:transparent;border:2px solid var(--muted)}
+.formule li ul{margin-top:4px}.formule li ul li::before{width:6px;height:6px;top:15px;background:var(--kraft)}
+.formule .pitch{font-size:.98rem;margin-top:10px;color:var(--ink)}
+@media (max-width:1000px){.formules,.formules.three{grid-template-columns:1fr 1fr}.formule:nth-child(odd){padding-left:0;border-left:0}}
+@media (max-width:620px){.formules,.formules.three{grid-template-columns:1fr}.formule+.formule{padding-left:0;border-left:0}}
+.notice{margin-top:32px;padding:18px 22px;background:#fff;border-left:5px solid var(--kraft);font-size:.95rem;max-width:none}
+[hidden]{display:none!important}
+
+/* métiers */
+.metier{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(24px,5vw,72px);padding:clamp(36px,5vw,64px) 0;border-top:1px solid var(--line);align-items:start}
+.metier:first-of-type{border-top:2px solid var(--navy);margin-top:48px}
+.metier>div>*+*{margin-top:1em}
+.metier h3{font-size:clamp(1.6rem,2.8vw,2.3rem)}
+.metier .photos{margin-top:0;grid-template-columns:repeat(2,1fr)}
+.metier .photos img:first-child{grid-column:1/-1;aspect-ratio:16/9}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips li{border:1.5px solid var(--navy);border-radius:999px;padding:.35em .95em;font-weight:600;font-size:.92rem;color:var(--navy)}
+@media (max-width:900px){.metier{grid-template-columns:1fr}}
+
+/* devis */
+.devis{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:44px;border-top:2px solid #fff}
+.devis>div{padding:30px 34px 34px 0}
+.devis>div+div{padding-left:34px;border-left:1px solid rgba(255,255,255,.25)}
+.devis>div>*+*{margin-top:14px}
+@media (max-width:800px){.devis{grid-template-columns:1fr}.devis>div+div{padding-left:0;border-left:0;border-top:1px solid rgba(255,255,255,.25)}}
+
+/* boutique */
+.order{background:var(--kraft);color:#2B1F0E;padding:20px 24px;font-weight:700;margin-top:28px!important;position:relative}
+.order span{position:relative}
+details{border-bottom:1px solid var(--line)}
+details:first-of-type{border-top:2px solid var(--navy)}
+summary{list-style:none;cursor:pointer;padding:20px 44px 20px 0;font-weight:800;font-stretch:115%;font-size:1.15rem;color:var(--navy);position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:6px;top:50%;transform:translateY(-50%);font-size:1.7rem;font-weight:500;color:var(--red);transition:transform .2s}
+details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+details ul{padding:0 0 22px}
+details li{padding:6px 0 6px 20px;position:relative;max-width:70ch}
+details li::before{content:"";position:absolute;left:0;top:16px;width:8px;height:8px;background:var(--kraft)}
+
+/* iso */
+.iso-grid{display:grid;grid-template-columns:repeat(3,1fr);margin-top:40px;border-top:2px solid var(--navy)}
+.iso-grid li{padding:22px 24px 26px 0;border-bottom:1px solid var(--line)}
+.iso-grid li+li{padding-left:24px;border-left:1px solid var(--line)}
+@media (max-width:800px){.iso-grid{grid-template-columns:1fr}.iso-grid li+li{padding-left:0;border-left:0}}
+
+/* partenaires */
+.partners{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:36px}
+.partners a{display:block;padding:26px;background:#fff;border:1px solid var(--line);text-decoration:none;transition:border-color .2s}
+.partners a:hover{border-color:var(--red)}
+.partners strong{display:block;font-stretch:120%;font-weight:800;font-size:1.25rem;color:var(--navy);margin-bottom:6px}
+.partners span{color:var(--muted);font-size:.95rem}
+@media (max-width:800px){.partners{grid-template-columns:1fr}}
+
+/* avis */
+.strip{display:grid;grid-auto-flow:column;grid-auto-columns:min(86%,380px);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px var(--pad) 24px;margin-top:28px;scrollbar-width:thin}
+.strip article{scroll-snap-align:start;background:#fff;padding:26px;border-top:5px solid var(--red);display:flex;flex-direction:column;gap:12px}
+.strip.site article{border-top-color:var(--navy)}
+.stars{color:#F5A400;letter-spacing:2px;font-size:1.05rem}
+.strip h3{font-size:1.1rem}
+.strip p{font-size:.98rem}
+.strip footer{margin-top:auto;font-weight:700;color:var(--navy);font-size:.95rem}
+.strip footer small{display:block;font-weight:500;color:var(--muted)}
+.avis-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:20px}
+.sub{font-stretch:115%;font-weight:800;color:var(--navy);font-size:1.2rem;margin-top:44px}
+
+/* contact */
+.contact{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,80px);margin-top:44px}
+@media (max-width:900px){.contact{grid-template-columns:1fr}}
+form{display:grid;gap:16px}
+label{display:grid;gap:6px;font-weight:700;font-size:.95rem;color:#fff}
+input,textarea,select{font:inherit;padding:.85em 1em;border:0;border-radius:4px;background:#fff;color:var(--ink);width:100%}
+textarea{min-height:140px;resize:vertical}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:560px){.two{grid-template-columns:1fr}}
+address{font-style:normal}
+.coords{border-top:2px solid #fff}
+.coords li{padding:16px 0;border-bottom:1px solid rgba(255,255,255,.2);display:grid;grid-template-columns:110px 1fr;gap:12px}
+.coords span{color:#AEBBD8;font-size:.92rem}
+.coords a{font-weight:700;text-decoration-color:var(--red);text-underline-offset:4px}
+.map{margin-top:24px;width:100%;height:300px;border:0;filter:saturate(.85)}
+#formMsg{font-weight:600;color:#fff;min-height:1.4em}
+
+/* inventaire */
+#inventaire{background:#fff}
+.inv-grid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:clamp(24px,4vw,56px);margin-top:44px;align-items:start}
+@media (max-width:980px){.inv-grid{grid-template-columns:1fr}}
+#invForm label{color:var(--navy)}
+#invForm input,#invForm select,#invForm textarea{border:1.5px solid var(--line);background:var(--paper)}
+#invForm input:focus,#invForm select:focus{border-color:var(--navy);outline:0}
+#invForm fieldset{border:0;border-top:2px solid var(--navy);padding:22px 0 34px;display:grid;gap:16px}
+#invForm legend{font-stretch:115%;font-weight:800;font-size:1.25rem;color:var(--navy);padding:0 14px 0 0;float:left;width:100%;margin-bottom:8px}
+#invForm legend+*{clear:both}
+.three{display:grid;grid-template-columns:2fr 1fr;gap:16px}
+.three>:last-child{grid-column:1/-1}
+.radios{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;font-weight:700;font-size:.95rem;color:var(--navy)}
+.radios>span{min-width:104px}
+.radios label{display:inline-flex;align-items:center;gap:7px;font-weight:500;cursor:pointer}
+.radios input{width:auto;accent-color:var(--red)}
+.adr{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(24px,4vw,48px)}
+@media (max-width:800px){.adr{grid-template-columns:1fr}}
+.room{border-bottom:1px solid var(--line)}
+.room:first-of-type{border-top:2px solid var(--navy)}
+.room summary{display:flex;align-items:center;gap:12px}
+.room summary em{font-style:normal;font-weight:600;font-stretch:100%;font-size:.85rem;color:#fff;background:var(--red);border-radius:999px;padding:.1em .7em;display:none}
+.room summary em.on{display:inline-block}
+.room .rows{padding:0 0 18px}
+.row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 16px;align-items:center;padding:9px 0;border-top:1px solid var(--line)}
+.row .nm{font-weight:600}
+.row.on .nm{color:var(--red)}
+.qty{display:inline-flex;align-items:center;border:1.5px solid var(--navy);border-radius:999px;overflow:hidden}
+.qty button{width:40px;height:40px;border:0;background:none;font-size:1.3rem;font-weight:700;color:var(--navy);line-height:1}
+.qty button:hover{background:var(--sky)}
+#invForm .qty input{width:44px;text-align:center;border:0;background:none;padding:0;font-weight:800;-moz-appearance:textfield;border-radius:0}
+.qty input::-webkit-outer-spin-button,.qty input::-webkit-inner-spin-button{-webkit-appearance:none}
+.row .ex{grid-column:1/-1;display:none;flex-wrap:wrap;gap:10px 18px;align-items:center;padding:4px 0 8px;font-size:.92rem}
+.row.on .ex{display:flex}
+#invForm .ex input[type=text]{width:190px;padding:.5em .7em;font-size:.92rem}
+.ex label{display:inline-flex!important;align-items:center;gap:7px;font-weight:500!important;cursor:pointer}
+.ex input[type=checkbox],.ex input[type=radio]{width:auto;accent-color:var(--red)}
+.recap{position:sticky;top:96px;background:var(--navy);color:#fff;padding:28px}
+.recap h3{color:#fff;font-size:1.15rem}
+.recap dl{margin:18px 0;border-top:1px solid rgba(255,255,255,.25)}
+.recap dl div{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.25)}
+.recap dt{color:#C8D3EA;font-size:.95rem}
+.recap dd{font-weight:800;font-stretch:115%;font-size:1.5rem}
+.recap small{display:block;color:#AEBBD8;font-size:.8rem;line-height:1.45;margin-bottom:18px}
+.recap .btn{width:100%;justify-content:center;margin-top:8px;padding:.8em 1em;font-size:.95rem;text-align:center}
+.recap .btn-ghost{background:none;border-color:rgba(255,255,255,.5);color:#fff}
+.recap .btn-ghost:hover{background:rgba(255,255,255,.12)}
+#invMsg{min-height:1.4em;font-weight:600;font-size:.92rem;margin-top:12px;color:#fff}
+@media (max-width:980px){.recap{position:static}}
+@media print{header.site,footer.site,.callbar,#progress,#intro,main>section:not(#inventaire),.recap .btn{display:none!important}.room .rows{display:block}}
+
+/* lien d'évitement, estimation rapide, preuves, carte */
+.skiplink{position:absolute;left:12px;top:-60px;z-index:2000;background:var(--navy);color:#fff;padding:.7em 1.1em;border-radius:6px;font-weight:700}
+.skiplink:focus{top:12px}
+.quick{background:var(--navy);color:#fff;padding:clamp(22px,2.6vw,34px);display:grid;gap:18px}
+.quick h2{color:#fff;font-size:clamp(1.25rem,1.9vw,1.6rem);max-width:none}
+.quick fieldset{border:0;display:grid;gap:10px}
+.quick legend{font-weight:700;font-size:.92rem;color:#C8D3EA;margin-bottom:8px;padding:0}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pills label{position:relative;cursor:pointer;color:#fff}
+.pills input{position:absolute;opacity:0;inset:0;width:100%;height:100%;cursor:pointer;margin:0}
+.pills span{display:block;padding:.5em 1em;border:1.5px solid rgba(255,255,255,.45);border-radius:999px;font-weight:600;font-size:.93rem;transition:background .15s,border-color .15s}
+.pills input:checked+span{background:#fff;color:var(--navy);border-color:#fff}
+.pills input:focus-visible+span{outline:3px solid var(--red);outline-offset:3px}
+.quick output{display:block;border-top:1px solid rgba(255,255,255,.25);padding-top:16px}
+.quick output strong{display:block;font-stretch:125%;font-weight:900;font-size:clamp(2rem,3.4vw,2.9rem);line-height:1;letter-spacing:-.02em}
+.quick output span{display:block;color:#C8D3EA;font-size:.95rem;margin-top:8px}
+.quick output small{display:block;color:#AEBBD8;font-size:.78rem;margin-top:8px;line-height:1.4}
+.quick .acts{display:flex;flex-wrap:wrap;gap:10px}
+.quick .btn{padding:.8em 1.2em;font-size:.95rem}
+.quick .btn-ghost{background:none;border-color:rgba(255,255,255,.5);color:#fff}
+.quick .btn-ghost:hover{background:rgba(255,255,255,.12)}
+.proofs{grid-template-columns:repeat(4,1fr);margin-top:0;border-top:0}
+.proofs li{padding:22px 20px 22px 0;border-bottom:0}
+.proofs li+li{padding-left:20px;border-left:1px solid var(--line)}
+@media (max-width:860px){.proofs{grid-template-columns:1fr 1fr}.proofs li:nth-child(3){padding-left:0;border-left:0}.proofs li:nth-child(n+3){border-top:1px solid var(--line)}}
+.voyages h4,.iso-grid h4{font-stretch:125%;font-weight:800;font-size:clamp(1.15rem,1.7vw,1.4rem);line-height:1.2;letter-spacing:-.01em;color:var(--navy);margin-bottom:8px}
+.h2s{font-size:clamp(1.15rem,1.7vw,1.4rem);letter-spacing:-.01em;line-height:1.2;max-width:none}
+.map-facade{margin-top:24px;height:300px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:24px;border:1px solid rgba(255,255,255,.25);background:repeating-linear-gradient(45deg,rgba(255,255,255,.04) 0 14px,transparent 14px 28px)}
+.map-facade p{color:#C8D3EA;font-size:.92rem;max-width:40ch}
+.map-facade .acts{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.go-title{margin-top:26px;font-weight:700;color:#C8D3EA;font-size:.92rem}
+.go{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
+.go a{display:flex;flex-direction:column;align-items:center;gap:8px;padding:16px 10px 14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.25);border-radius:6px;text-decoration:none;color:#fff;font-weight:700;font-size:.92rem;transition:background .15s,border-color .15s}
+.go a:hover{background:rgba(255,255,255,.16);border-color:#fff}
+.go svg{width:38px;height:38px}
+@media (max-width:400px){.go{grid-template-columns:1fr 1fr 1fr;gap:6px}.go a{padding:12px 4px;font-size:.82rem}}
+.legal{font-size:.82rem;color:var(--muted);max-width:none}
+.navy .legal{color:#AEBBD8}
+.hp{position:absolute!important;left:-9999px;width:1px;height:1px;overflow:hidden}
+[aria-invalid=true]{outline:2px solid var(--red)!important;outline-offset:1px}
+#addRoom{margin-top:18px;background:none;border:1.5px dashed var(--navy);color:var(--navy);border-radius:999px;padding:.6em 1.2em;font-weight:700;font-size:.93rem}
+#addRoom:hover{background:var(--sky)}
+#invClear{background:none;border:0;color:#AEBBD8;text-decoration:underline;font-size:.85rem;margin-top:14px}
+
+/* footer */
+footer.site{background:var(--navy-deep);color:#AEBBD8;padding:56px 0 40px;font-size:.86rem;line-height:1.6}
+footer.site .wordmark{font-size:30px;color:#fff;margin-bottom:22px}
+footer.site .wordmark small{color:var(--red)}
+footer.site p{max-width:none}
+footer.site p+p{margin-top:10px}
+footer.site a{color:#fff}
+.foot-links{display:flex;flex-wrap:wrap;gap:8px 22px;margin:26px 0;padding:22px 0;border-block:1px solid rgba(255,255,255,.14);font-size:.95rem}
+.foot-links a{text-decoration:none}.foot-links a:hover{text-decoration:underline}
+.callbar{display:none}
+@media (max-width:700px){
+  .award::after{display:none}
+  .callbar{display:flex;position:fixed;inset:auto 0 0 0;z-index:40;background:var(--navy);padding:10px 12px;gap:10px;padding-bottom:calc(10px + env(safe-area-inset-bottom))}
+  .callbar .btn{flex:1;justify-content:center;padding:.8em 1em;font-size:.95rem}
+  body{padding-bottom:70px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- ================= INTRO ANIMÉE ================= -->
+<div id="intro" role="dialog" aria-label="Animation d'accueil Déménagements Christophe">
+  <button id="skip" type="button">Passer l'intro</button>
+  <div class="top">
+    <div class="wordmark" aria-hidden="true"><small>DÉMÉNAGEMENTS</small><span>Christophe</span></div>
+    <div id="caption" aria-live="polite">On protège et on emballe.</div>
+  </div>
+
+  <svg id="scene" viewBox="0 0 1600 600" preserveAspectRatio="xMidYMax meet" aria-hidden="true">
+    <defs>
+      <pattern id="dash" width="120" height="8" patternUnits="userSpaceOnUse"><rect width="64" height="8" rx="2" fill="#fff" opacity=".85"/></pattern>
+      <g id="tree"><rect x="-6" y="-70" width="12" height="70" fill="#7A5A3A"/><circle cx="0" cy="-105" r="48" fill="#5E9E5B"/><circle cx="-26" cy="-82" r="30" fill="#4F8F50"/><circle cx="26" cy="-84" r="32" fill="#6BAE66"/></g>
+      <g id="lamp"><rect x="-3" y="-190" width="6" height="190" fill="#55607A"/><path d="M0-190q0-16 30-16v8q-22 0-22 8z" fill="#55607A"/><circle cx="30" cy="-196" r="7" fill="#FFE08A"/></g>
+      <g id="pin"><path d="M0 0C-26-34-34-48-34-64a34 34 0 1 1 68 0C34-48 26-34 0 0z" fill="#E2231A"/><circle cx="0" cy="-64" r="14" fill="#fff"/></g>
+      <g id="wheelG"><circle r="33" fill="#1B2030"/><circle r="19" fill="#C9D0DE"/><circle r="6" fill="#55607A"/><path d="M0-18V18M-18 0H18M-13-13 13 13M13-13-13 13" stroke="#55607A" stroke-width="4"/></g>
+    </defs>
+
+    <!-- ciel -->
+    <circle cx="1320" cy="110" r="52" fill="#FFE9A8"/>
+    <g id="clouds" fill="#fff" opacity=".95">
+      <g transform="translate(260 120)"><ellipse rx="70" ry="22"/><ellipse cx="-30" cy="-16" rx="36" ry="22"/><ellipse cx="24" cy="-22" rx="42" ry="28"/></g>
+      <g transform="translate(900 70) scale(.8)"><ellipse rx="70" ry="22"/><ellipse cx="-30" cy="-16" rx="36" ry="22"/><ellipse cx="24" cy="-22" rx="42" ry="28"/></g>
+      <g transform="translate(1750 150)"><ellipse rx="70" ry="22"/><ellipse cx="-30" cy="-16" rx="36" ry="22"/><ellipse cx="24" cy="-22" rx="42" ry="28"/></g>
+    </g>
+
+    <!-- plan lointain : collines de Champagne + cathédrale de Reims -->
+    <g id="far">
+      <path d="M-1200 500V400Q-900 330 -600 390T-100 400Q200 300 520 380T1100 360T1700 390T2300 350T2900 400V500Z" fill="#CFE2C3"/>
+      <g transform="translate(1420 372)" fill="#9DB1CC">
+        <rect x="-70" y="-150" width="46" height="150"/><rect x="24" y="-150" width="46" height="150"/>
+        <rect x="-24" y="-96" width="48" height="96"/><path d="M-24-96 0-132 24-96z"/>
+        <circle cx="0" cy="-64" r="15" fill="#CFE2C3"/>
+        <rect x="70" y="-70" width="150" height="70"/><path d="M70-70 145-104 220-70z"/>
+        <path d="M-70-150h46v-12h-10v12h-8v-12h-10v12h-8v-12h-10zM24-150h46v-12h-10v12h-8v-12h-10v12h-8v-12h-10z"/>
+      </g>
+      <path d="M-1200 500V440Q-800 400 -400 440T-100 440Q300 380 700 430T1500 420T2300 440T3000 420V500Z" fill="#B5D2A2"/>
+      <g stroke="#8FB97F" stroke-width="5" stroke-dasharray="3 12" fill="none" opacity=".9">
+        <path d="M1300 452h700M1320 468h700M1340 484h700"/>
+      </g>
+    </g>
+
+    <!-- route -->
+    <rect x="-1200" y="500" width="4200" height="120" fill="#262E44"/>
+    <rect x="-1200" y="500" width="4200" height="5" fill="#8B93A8"/>
+
+    <!-- plan proche : maisons, arbres, panneaux (défile pendant le trajet) -->
+    <g id="near">
+      <rect id="dashes" x="-1200" y="556" width="7200" height="8" fill="url(#dash)"/>
+      <use href="#tree" x="60" y="500"/><use href="#tree" x="-260" y="500"/><use href="#lamp" x="-560" y="500"/><use href="#tree" x="-880" y="500"/>
+      <!-- ancienne maison -->
+      <g id="houseA">
+        <rect x="140" y="292" width="320" height="208" fill="#F2E6D4"/>
+        <path d="M112 298 300 176 488 298z" fill="#B5523B"/>
+        <rect x="372" y="196" width="30" height="62" fill="#B5523B"/>
+        <rect x="172" y="330" width="70" height="70" fill="#9CC3E8" stroke="#fff" stroke-width="6"/>
+        <rect x="272" y="330" width="70" height="70" fill="#9CC3E8" stroke="#fff" stroke-width="6"/>
+        <rect x="172" y="425" width="70" height="50" fill="#9CC3E8" stroke="#fff" stroke-width="6"/>
+        <rect x="392" y="396" width="56" height="104" fill="#3A2A22"/>
+        <rect x="392" y="396" width="8" height="104" fill="#12295B"/>
+        <g transform="translate(300 160)"><g id="pinA"><use href="#pin"/><text x="46" y="-54" text-anchor="start" font-size="24" font-weight="800" fill="#12295B">Ancienne adresse</text></g></g>
+      </g>
+      <use href="#lamp" x="1260" y="500"/>
+      <use href="#tree" x="1480" y="500"/><use href="#tree" x="1760" y="500" transform="translate(0 0)"/>
+      <use href="#lamp" x="2050" y="500"/>
+      <g transform="translate(2300 500)"><rect x="-4" y="-150" width="8" height="150" fill="#55607A"/><rect x="-92" y="-206" width="184" height="62" rx="6" fill="#fff" stroke="#E2231A" stroke-width="7"/><text y="-162" text-anchor="middle" font-size="34" font-weight="900" fill="#12295B" letter-spacing="3">REIMS</text></g>
+      <use href="#tree" x="2560" y="500"/><use href="#tree" x="2700" y="500"/><use href="#lamp" x="2980" y="500"/>
+      <use href="#tree" x="3300" y="500"/><use href="#tree" x="3900" y="500"/><use href="#lamp" x="4180" y="500"/>
+      <!-- nouvelle maison -->
+      <g id="houseB" transform="translate(4360 0)">
+        <rect x="0" y="262" width="380" height="238" fill="#fff"/>
+        <path d="M-26 268 190 150 406 268z" fill="#12295B"/>
+        <rect x="36" y="300" width="84" height="76" fill="#9CC3E8" stroke="#E8ECF4" stroke-width="6"/>
+        <rect x="256" y="300" width="84" height="76" fill="#9CC3E8" stroke="#E8ECF4" stroke-width="6"/>
+        <rect x="146" y="300" width="84" height="76" fill="#9CC3E8" stroke="#E8ECF4" stroke-width="6"/>
+        <rect x="256" y="410" width="84" height="60" fill="#9CC3E8" stroke="#E8ECF4" stroke-width="6"/>
+        <rect x="70" y="396" width="60" height="104" fill="#E2231A"/><circle cx="120" cy="450" r="4" fill="#fff"/>
+        <g transform="translate(190 140)"><g id="pinB"><use href="#pin"/><text x="-46" y="-54" text-anchor="end" font-size="24" font-weight="800" fill="#12295B">Nouvelle adresse</text></g></g>
+      </g>
+    </g>
+
+    <!-- rampe + déménageurs (passent DERRIÈRE la caisse du camion) -->
+    <path id="ramp" d="M600 440 515 500h16L612 446z" fill="#55607A"/>
+    <g id="crew"></g>
+
+    <!-- camion -->
+    <g id="truck">
+      <g id="truckBody">
+        <rect x="596" y="438" width="560" height="16" fill="#1B2030"/>
+        <rect x="640" y="454" width="330" height="26" rx="4" fill="#E9EDF4"/>
+        <rect x="600" y="222" width="414" height="218" rx="4" fill="#FDFDFE" stroke="#C9D2E3" stroke-width="2"/>
+        <path d="M600 226a4 4 0 0 1 4-4h406a4 4 0 0 1 4 4v34Q860 312 600 268z" fill="#12295B"/>
+        <text x="618" y="252" font-size="17" font-weight="600" fill="#fff" textLength="300" lengthAdjust="spacing">LES GENTLEMEN DU DÉMÉNAGEMENT</text>
+        <text x="640" y="336" font-size="24" font-weight="800" fill="#E2231A" letter-spacing="2" style="font-stretch:110%">DÉMÉNAGEMENTS</text>
+        <text x="636" y="396" font-size="70" font-weight="900" fill="#E2231A" textLength="340" lengthAdjust="spacingAndGlyphs" style="font-stretch:112%">Christophe</text>
+        <text x="640" y="424" font-size="14" font-weight="600" fill="#55607A" textLength="228" lengthAdjust="spacingAndGlyphs">Garde-meubles, transferts, international</text><text x="1000" y="424" text-anchor="end" font-size="16" font-weight="800" fill="#12295B" textLength="112" lengthAdjust="spacingAndGlyphs">03 26 85 16 18</text>
+        <rect x="600" y="222" width="7" height="218" fill="#C9D2E3"/>
+        <!-- cabine -->
+        <path d="M1040 222h70l-6 50h-64z" fill="#12295B"/>
+        <path d="M1020 440V296q0-16 16-16h70q16 0 23 14l27 70v76z" fill="#FDFDFE" stroke="#C9D2E3" stroke-width="2"/>
+        <path d="M1062 296h42q10 0 14 9l24 58h-80z" fill="#9CC3E8"/>
+        <g id="heads" opacity="0">
+          <g transform="translate(1082 352)"><circle r="11" fill="#F0C9A4"/><ellipse cy="-10" rx="16" ry="3.2" fill="#EAD79C"/><rect x="-9" y="-20" width="18" height="10" rx="2" fill="#EAD79C"/><rect x="-9" y="-14" width="18" height="4" fill="#E2231A"/></g>
+          <g transform="translate(1112 354)"><circle r="11" fill="#F0C9A4"/><ellipse cy="-10" rx="16" ry="3.2" fill="#EAD79C"/><rect x="-9" y="-20" width="18" height="10" rx="2" fill="#EAD79C"/><rect x="-9" y="-14" width="18" height="4" fill="#E2231A"/></g>
+        </g>
+        <path d="M1062 363h80v6h-80z" fill="#12295B"/>
+        <rect x="1030" y="380" width="26" height="6" rx="3" fill="#55607A"/>
+        <rect x="1146" y="404" width="12" height="22" rx="3" fill="#FFE08A"/>
+        <rect x="1020" y="440" width="140" height="18" rx="4" fill="#12295B"/>
+      </g>
+      <g id="w1" transform="translate(690 470)"><use href="#wheelG" class="wheel"/></g>
+      <g id="w2" transform="translate(768 470)"><use href="#wheelG" class="wheel"/></g>
+      <g id="w3" transform="translate(1092 470)"><use href="#wheelG" class="wheel"/></g>
+    </g>
+
+    <!-- chef d'équipe (passe DEVANT le camion) -->
+    <g id="front"></g>
+  </svg>
+
+  <div class="bottom">
+    <svg id="route" viewBox="0 0 600 70" aria-hidden="true">
+      <path id="routeBg" d="M40 46C180 6 420 86 560 38" fill="none" stroke="#fff" stroke-opacity=".3" stroke-width="4" stroke-dasharray="2 12" stroke-linecap="round"/>
+      <path id="routeFg" d="M40 46C180 6 420 86 560 38" fill="none" stroke="#E2231A" stroke-width="5" stroke-linecap="round"/>
+      <g id="ms"></g>
+      <g id="routeDot"><rect x="-17" y="-13" width="24" height="16" rx="2" fill="#fff"/><path d="M8-8h8l5 7v4H8z" fill="#fff"/><circle cx="-9" cy="5" r="4" fill="#E2231A"/><circle cx="13" cy="5" r="4" fill="#E2231A"/></g>
+    </svg>
+    <ol id="steps"><li class="on" data-n="1">Emballage</li><li data-n="2">Chargement</li><li data-n="3">Transport</li><li data-n="4">Installation</li></ol>
+  </div>
+
+  <div id="curtain">
+    <div class="wordmark"><small>DÉMÉNAGEMENTS</small><span>Christophe</span></div>
+    <p>Les Gentlemen du Déménagement à Reims, depuis plus de 60 ans</p>
+  </div>
+</div>
+
+<!-- ================= SITE ================= -->
+<a class="skiplink" href="#top">Aller au contenu</a>
+<div id="progress" aria-hidden="true"><i></i><svg viewBox="0 0 34 20"><rect x="1" y="2" width="20" height="12" rx="1.5" fill="#12295B"/><path d="M22 6h6l5 5v3H22z" fill="#12295B"/><circle cx="8" cy="16" r="3.4" fill="#E2231A"/><circle cx="26" cy="16" r="3.4" fill="#E2231A"/></svg></div>
+
+<header class="site">
+  <div class="wrap">
+    <a class="wordmark" href="#top" aria-label="Déménagements Christophe, retour en haut"><small>DÉMÉNAGEMENTS</small><span>Christophe</span></a>
+    <nav class="main" id="nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="#demenagement">Déménagement</a></li>
+        <li><a href="#international">International</a></li>
+        <li><a href="#metiers">Nos métiers</a></li>
+        <li><a href="#devis">Devis</a></li>
+        <li><a href="#boutique">Boutique</a></li>
+        <li><a href="#iso">Norme ISO</a></li>
+        <li><a href="#avis">Avis</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-red tel" href="tel:0326851618"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg><span>03 26 85 16 18</span></a>
+    <button id="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav"><i></i></button>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <h1><em>Déménagements</em>Christophe<b>.</b></h1>
+    <div class="hero-grid">
+      <div>
+        <p class="lead">Déménageurs à Reims depuis plus de 60 ans. Particuliers, entreprises et administrations, partout en France et dans le monde entier, avec un personnel qualifié et un matériel adapté.</p>
+        <div class="hero-cta">
+          <a class="btn btn-red" href="#inventaire">Remplir ma fiche inventaire</a>
+          <a class="btn btn-line" href="tel:0326851618">Appeler le 03 26 85 16 18</a>
+        </div>
+        <button id="replay" type="button">Revoir l'animation d'accueil</button>
+      </div>
+      <form class="quick" id="quick" aria-labelledby="quickT" onsubmit="return false">
+        <h2 id="quickT">Votre volume en 10 secondes</h2>
+        <fieldset>
+          <legend>Votre logement actuel</legend>
+          <div class="pills">
+            <label><input type="radio" name="logement" value="Studio"><span>Studio</span></label>
+            <label><input type="radio" name="logement" value="T2"><span>T2</span></label>
+            <label><input type="radio" name="logement" value="T3" checked><span>T3</span></label>
+            <label><input type="radio" name="logement" value="T4"><span>T4</span></label>
+            <label><input type="radio" name="logement" value="T5 et plus"><span>T5 et plus</span></label>
+            <label><input type="radio" name="logement" value="Maison"><span>Maison</span></label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>Votre destination</legend>
+          <div class="pills">
+            <label><input type="radio" name="dest" value="Reims et environs" checked><span>Reims et environs</span></label>
+            <label><input type="radio" name="dest" value="Ailleurs en France"><span>Ailleurs en France</span></label>
+            <label><input type="radio" name="dest" value="International, DOM‑TOM"><span>International, DOM‑TOM</span></label>
+          </div>
+        </fieldset>
+        <output for="quick" aria-live="polite"><strong id="quickVol">30 à 35 m³</strong><span id="quickTrip"></span><small>Fourchette indicative pour un logement normalement meublé. Le devis gratuit fixe le volume réel.</small></output>
+        <div class="acts">
+          <button class="btn btn-red" type="button" id="quickCall">Être rappelé pour un devis</button>
+          <a class="btn btn-ghost" href="#inventaire">Affiner avec l'inventaire</a>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="hero-photo">
+    <img width="1900" height="400" decoding="async" src="flotte-depot-reims.webp" data-fb="https://www.christophe-demenagements.com/wp-content/uploads/2024/12/demenageur-reims.jpg" alt="La flotte de camions Déménagements Christophe devant le dépôt de Saint-Brice-Courcelles" fetchpriority="high">
+  </div>
+  <div class="wrap">
+    <ul class="proofs">
+      <li><strong>ISO 9001</strong>Première société de déménagement certifiée qualité dans la Marne</li>
+      <li><strong>ISO 14001</strong>Certification respect de l'environnement</li>
+      <li><strong>Gentlemen du Déménagement</strong>Membre du groupement depuis 2014</li>
+      <li><strong>Prix France 2023-2024</strong>Meilleur Gentlemen et service qualité</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ENTREPRISE -->
+<section class="block" id="entreprise">
+  <div class="wrap split">
+    <div>
+      <h2>Une entreprise familiale, trois générations de soin.</h2>
+    </div>
+    <div>
+      <p class="lead">Depuis plus de 60 ans, la SARL CHRISTOPHE a le souci d'offrir à sa clientèle de particuliers, d'entreprises et d'administrations un large éventail de prestations, tout en assurant un service de qualité.</p>
+      <p>Membre de la Chambre Syndicale des déménageurs, nous sommes la première société de déménagement à avoir obtenu la certification ISO 9001 version 2000 dans la Marne (certification de qualité), puis récemment la certification ISO 14001 (respect de l'environnement).</p>
+      <p>Depuis 2014, la SARL CHRISTOPHE adhère au groupement des Gentlemen du Déménagement dans la Marne.</p>
+      <p class="quote">La SARL Vincent CHRISTOPHE évolue. Depuis fin 2024, Lorris CHRISTOPHE a repris le flambeau de l'entreprise familiale, perpétuant son savoir-faire et son engagement pour un déménagement de qualité.</p>
+      <h3 style="margin-top:40px">Nous sommes réputés pour</h3>
+      <ul class="ticks">
+        <li>Notre service de qualité</li>
+        <li>Notre personnel professionnel et qualifié</li>
+        <li>Notre matériel performant et adapté</li>
+      </ul>
+      <p><strong>Nous serons à la hauteur de vos attentes.</strong></p>
+      <div class="award">
+        <h3>Meilleur Gentlemen et service qualité France 2023-2024</h3>
+        <p>Lors du trentième anniversaire et de l'assemblée générale annuelle du groupe « Les Gentlemen du Déménagement », la société Déménagements Christophe a eu la fierté de se voir décerner ce prix. Il reconnaît l'excellence du travail de nos déménageurs professionnels et la qualité des services fournis.</p>
+      </div>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="photos">
+      <img width="960" height="355" decoding="async" loading="lazy" src="camions-reims-centre.webp" data-fb="https://www.christophe-demenagements.com/wp-content/uploads/2024/12/demenagemeurs-reims-france.jpg" alt="Camions Christophe place Drouet-d'Erlon à Reims">
+      <img width="960" height="355" decoding="async" loading="lazy" src="semi-remorque-demenagement.webp" data-fb="https://www.christophe-demenagements.com/wp-content/uploads/2024/12/demenagement-maisons-reims.jpg" alt="Semi-remorque Christophe en déménagement de maison">
+      <img width="960" height="355" decoding="async" loading="lazy" src="demenagement-international-ferry.webp" data-fb="https://www.christophe-demenagements.com/wp-content/uploads/2024/12/demenagement-national-international.jpg" alt="Camion Christophe embarquant sur un ferry pour un déménagement international">
+    </div>
+  </div>
+</section>
+
+<hr class="road">
+
+<!-- DÉMÉNAGEMENT -->
+<section class="block" id="demenagement">
+  <div class="wrap">
+    <div class="split">
+      <h2>Un déménagement sur mesure.</h2>
+      <div>
+        <p class="lead">Quels que soient vos exigences et votre budget, nous avons la solution. Nous sommes à votre disposition pour vous conseiller et établir un plan de travail adapté à vos exigences.</p>
+        <p>Nous assurons les déménagements nationaux et internationaux. Vous choisissez un type de voyage, puis une formule de prestation.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top:56px">Nos 3 types de voyages</h3>
+    <ol class="voyages">
+      <li><h4>Urbain</h4><p>Reims et ses environs, sur un périmètre de 10 km.</p></li>
+      <li><h4>Spécial</h4><p>Votre déménagement s'effectue suivant les dates que vous fixez et selon nos disponibilités.</p></li>
+      <li><h4>Organisé ou groupage</h4><p>Vous bénéficiez d'une tarification avantageuse en combinant votre déménagement avec un ou plusieurs autres clients.</p></li>
+    </ol>
+
+    <div class="tabs" role="tablist" aria-label="Type de client">
+      <button role="tab" id="tab-part" aria-selected="true" aria-controls="panel-part">Particuliers</button>
+      <button role="tab" id="tab-ent" aria-selected="false" aria-controls="panel-ent" tabindex="-1">Entreprises et administrations</button>
+    </div>
+
+    <!-- particuliers -->
+    <div id="panel-part" role="tabpanel" aria-labelledby="tab-part">
+      <p class="muted">4 formules de prestation, de la plus complète à la plus économique.</p>
+      <div class="formules">
+        <article class="formule">
+          <h3>Confort plus</h3>
+          <div class="gauge"><i style="width:100%"></i></div><small>Tout est pris en charge</small>
+          <p class="pitch">Vous ne vous souciez de rien et confiez l'intégralité de votre prestation à nos mains expertes.</p>
+          <h4>Nous réalisons</h4>
+          <ul>
+            <li>Démontage et remontage de votre mobilier</li>
+            <li>Protection du mobilier, sous bulles ou couvertures</li>
+            <li>Emballage de tous vos objets fragiles ou non fragiles (linge, livres, vaisselle, bibelots…). Selon votre désir, l'emballage de vos effets personnels peut être laissé à votre charge</li>
+            <li>Protection de la literie sous housses neuves</li>
+            <li>Transport en penderies des vêtements sur cintres</li>
+            <li>Option ménage et/ou shampoing des moquettes</li>
+          </ul>
+          <h4 class="you">Vous réalisez</h4>
+          <ul><li>Déballage des objets non fragiles</li></ul>
+        </article>
+        <article class="formule">
+          <h3>Confort</h3>
+          <div class="gauge"><i style="width:75%"></i></div><small>Le fragile est pour nous</small>
+          <h4>Nous réalisons</h4>
+          <ul>
+            <li>Démontage et remontage de votre mobilier</li>
+            <li>Protection du mobilier, sous bulles ou couvertures</li>
+            <li>Emballage des objets fragiles (vaisselle, bibelots, etc.)</li>
+            <li>Protection de la literie sous housses neuves</li>
+            <li>Transport en penderies des vêtements sur cintres</li>
+          </ul>
+          <h4 class="you">Vous réalisez</h4>
+          <ul>
+            <li>Emballage des objets non fragiles (linge, livres…)</li>
+            <li>Déballage des objets non fragiles</li>
+          </ul>
+        </article>
+        <article class="formule">
+          <h3>Dynamique</h3>
+          <div class="gauge"><i style="width:50%"></i></div><small>Vous emballez, nous protégeons et transportons</small>
+          <h4>Nous réalisons</h4>
+          <ul>
+            <li>Protection de la literie sous housses neuves</li>
+            <li>Protection du mobilier, sous bulles ou couvertures</li>
+            <li>Transport en penderies des vêtements sur cintres</li>
+            <li>Sur options :
+              <ul>
+                <li>Démontage et remontage de votre mobilier</li>
+                <li>Fourniture de cartons</li>
+                <li>Emballage de la vaisselle et des bibelots</li>
+              </ul>
+            </li>
+          </ul>
+          <h4 class="you">Vous réalisez</h4>
+          <ul>
+            <li>Démontage et remontage de votre mobilier</li>
+            <li>L'intégralité des emballages</li>
+            <li>Déballage des objets fragiles et non fragiles</li>
+          </ul>
+        </article>
+        <article class="formule">
+          <h3>Autre</h3>
+          <div class="gauge"><i style="width:25%"></i></div><small>Meubles et électroménager uniquement</small>
+          <h4>Nous réalisons</h4>
+          <ul><li>Déménagement, protection et démontage-remontage uniquement des meubles et de l'électroménager</li></ul>
+          <h4 class="you">Vous réalisez</h4>
+          <ul>
+            <li>Emballage de tous vos objets fragiles et non fragiles</li>
+            <li>Transport de tous vos cartons</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+
+    <!-- entreprises -->
+    <div id="panel-ent" role="tabpanel" aria-labelledby="tab-ent" hidden>
+      <p class="muted">Déménagement d'entreprise ou d'administration : 3 formules de prestation, avec un plan de travail adapté à vos exigences.</p>
+      <div class="formules three">
+        <article class="formule">
+          <h3>Confort plus</h3>
+          <div class="gauge"><i style="width:100%"></i></div><small>Tout est pris en charge</small>
+          <p class="pitch">Vous ne vous souciez de rien et confiez l'intégralité de votre prestation à nos mains expertes.</p>
+          <h4>Nous réalisons</h4>
+          <ul>
+            <li>Démontage et remontage de votre mobilier de bureau</li>
+            <li>Emballage des archives, livres, documents ou autres</li>
+            <li>Protection du matériel informatique</li>
+            <li>Prise en charge et réinstallation du mobilier de bureau</li>
+          </ul>
+          <h4 class="you">Vous réalisez</h4>
+          <ul><li>Déballage des objets non fragiles</li></ul>
+        </article>
+        <article class="formule">
+          <h3>Confort</h3>
+          <div class="gauge"><i style="width:70%"></i></div><small>Vous emballez vos archives</small>
+          <h4>Nous réalisons</h4>
+          <ul>
+            <li>Démontage et remontage de votre mobilier de bureau</li>
+            <li>Emballage des objets fragiles</li>
+            <li>Protection du matériel informatique</li>
+            <li>Prise en charge et réinstallation du mobilier de bureau</li>
+          </ul>
+          <h4 class="you">Vous réalisez</h4>
+          <ul>
+            <li>Emballage des archives, livres, documents ou autres (des cartons sont mis à votre disposition)</li>
+            <li>Déballage des objets non fragiles</li>
+          </ul>
+        </article>
+        <article class="formule">
+          <h3>Autre</h3>
+          <div class="gauge"><i style="width:30%"></i></div><small>Meubles et électroménager uniquement</small>
+          <h4>Nous réalisons</h4>
+          <ul><li>Déménagement, protection et démontage-remontage uniquement des meubles et de l'électroménager</li></ul>
+        </article>
+      </div>
+      <div class="photos" style="grid-template-columns:1fr"><img width="640" height="480" decoding="async" loading="lazy" style="aspect-ratio:21/9" src="demenagement-entreprise-reims.webp" data-fb="https://www.christophe-demenagements.com/wp-content/uploads/2024/01/demenagement-entreprise-reims.jpg" alt="Camion Christophe devant un immeuble de bureaux à Reims"></div>
+    </div>
+
+    <p class="notice">Bien qu'étant qualifié, notre personnel ne peut en aucun cas assurer le démontage de tout ce qui est fixé ou vissé dans les murs et plafonds (ex. : tringles à rideaux, luminaires…), pas plus que la déconnexion et la reconnexion des appareils électriques.</p>
+  </div>
+</section>
+
+<!-- INTERNATIONAL -->
+<section class="block navy" id="international">
+  <div class="wrap">
+    <div class="split">
+      <h2>International et DOM‑TOM, de porte à porte.</h2>
+      <div>
+        <p class="lead" style="color:#fff">La société Vincent CHRISTOPHE, Gentlemen, organise votre déménagement complet de porte à porte dans le monde entier et selon vos besoins.</p>
+        <p>Vos effets personnels sont protégés par des emballages spécifiques (bulkraft, cartons renforcés) et sont conditionnés dans des containers adaptés au volume à expédier, par voie maritime essentiellement. Selon chaque pays, des documents sont à fournir et un devis personnalisé devra être établi.</p>
+        <p>Nous vous offrons également des prestations complémentaires comme le transport de véhicules, le garde-meubles de courte ou longue durée, ainsi que de nombreux services pour faciliter votre installation.</p>
+        <h3 style="margin-top:36px">Transport de véhicules à l'international</h3>
+        <p>Votre véhicule voyage dans des conditions optimales de sécurité et de protection : transport en conteneur, voiture bloquée et arrimée au sol, gardiennage au départ et à l'arrivée, entrepôt sous douane, livraison et réception par du personnel qualifié.</p>
+        <p class="muted">Pour connaître la liste des pays acceptant l'importation de véhicules, n'hésitez pas à nous contacter.</p>
+        <p><a class="btn btn-white" href="#contact">Nous contacter pour un départ à l'étranger</a></p>
+      </div>
+    </div>
+    <div class="photos g4">
+      <img width="1200" height="900" decoding="async" loading="lazy" src="camion-embarquement-bateau.webp" data-fb="https://www.christophe-demenagements.com/wp-content/uploads/2017/12/SCANIA-BATEAU-PHOTO2-1.jpg" alt="Camion Scania Christophe embarquant sur un bateau">
+      <img width="1200" height="1600" decoding="async" loading="lazy" src="transport-voiture-camion.webp" data-fb="https://www.christophe-demenagements.com/wp-content/uploads/2017/12/VOITURE-DANS-CAMION-scaled-1.jpg" alt="Voiture arrimée dans un camion de déménagement">
+      <img width="640" height="480" decoding="async" loading="lazy" src="moto-export.webp" data-fb="https://www.christophe-demenagements.com/wp-content/uploads/2017/12/moto-export-1.jpg" alt="Moto emballée pour l'export">
+      <img width="640" height="480" decoding="async" loading="lazy" src="container-export.webp" data-fb="https://www.christophe-demenagements.com/wp-content/uploads/2017/12/Photo-export-003-1024x6881-640x480_c.jpg" alt="Préparation d'un container pour l'export">
+    </div>
+  </div>
+</section>
+
+<!-- MÉTIERS -->
+<section class="block" id="metiers">
+  <div class="wrap">
+    <h2>Nos métiers, au-delà du déménagement.</h2>
+
+    <article class="metier" id="garde-meubles">
+      <div>
+        <h3>Garde-meubles et self-stockage</h3>
+        <p class="lead">Nous disposons de containers de 8 et 12 m³ classiques et de 8 m³ en « self-stockage ».</p>
+        <p>Déménagements CHRISTOPHE, Gentlemen, est votre partenaire de confiance pour le stockage sécurisé de vos biens à Reims. Nous comprenons à quel point il est important de confier vos biens précieux à un service de garde-meubles fiable et sécurisé. Quel que soit le volume de vos biens à stocker, nous avons la solution qui vous convient.</p>
+        <p><strong>Sécurité avant tout.</strong> Notre installation de garde-meubles est équipée d'un système d'alarme de pointe et de vidéosurveillance 24 h/24 et 7 j/7 pour assurer une protection optimale de vos biens.</p>
+        <ul class="chips"><li>Containers 8 m³</li><li>Containers 12 m³</li><li>Self-stockage 8 m³</li><li>Alarme</li><li>Vidéosurveillance 24/7</li></ul>
+      </div>
+      <div class="photos">
+        <img width="1200" height="900" decoding="async" loading="lazy" src="garde-meubles-containers.webp" data-fb="https://www.christophe-demenagements.com/wp-content/uploads/2017/12/garde-meubles-self-stockage-reims-005-1.jpg" alt="Rangées de containers en bois dans le garde-meubles Christophe">
+        <img width="640" height="480" decoding="async" loading="lazy" src="garde-meubles-chariot.webp" data-fb="https://www.christophe-demenagements.com/wp-content/uploads/2017/12/GARDE-MEUBLES-1.jpg" alt="Chariot élévateur déplaçant un container de garde-meubles">
+        <img width="1200" height="900" decoding="async" loading="lazy" src="self-stockage-reims.webp" data-fb="https://www.christophe-demenagements.com/wp-content/uploads/2017/12/garde-meubles-self-stockage-reims-007-1.jpg" alt="Espace de self-stockage à Reims">
+      </div>
+    </article>
+
+    <article class="metier" id="objets-lourds">
+      <div>
+        <h3>Piano, coffre-fort, billard, voiture</h3>
+        <p class="lead">Notre expérience et le matériel spécifique utilisé nous permettent de manutentionner en toute sécurité et sérénité des objets très lourds.</p>
+        <ul class="chips"><li>Piano</li><li>Coffre-fort</li><li>Billard</li><li>Frigo américain</li><li>Voiture</li></ul>
+      </div>
+      <div class="photos">
+        <img width="640" height="480" decoding="async" loading="lazy" src="demenagement-piano.webp" data-fb="https://www.christophe-demenagements.com/wp-content/uploads/2017/12/4-piano52e6946edc3c9-640x480_c.jpg" alt="Déménageurs manutentionnant un piano droit">
+        <img width="640" height="480" decoding="async" loading="lazy" src="demenagement-coffre-fort.webp" data-fb="https://www.christophe-demenagements.com/wp-content/uploads/2017/12/coffre-fort352d935b8c4c25-640x480_c.jpg" alt="Coffre-fort sanglé sur un chariot spécial">
+        <img width="640" height="480" decoding="async" loading="lazy" src="piano-emballe.webp" data-fb="https://www.christophe-demenagements.com/wp-content/uploads/2017/12/piano-emballe52e694700d371.png" alt="Piano emballé et protégé pour le transport">
+      </div>
+    </article>
+
+    <article class="metier" id="monte-meubles">
+      <div>
+        <h3>Location de monte-meubles</h3>
+        <p class="lead">Les Déménagements Christophe, Gentlemen, vous proposent la location de monte-meubles avec un moniteur qui vous aidera à placer vos biens sur la nacelle.</p>
+        <p>Selon les accès et l'étage, un monte-meubles thermique, électrique ou sur camion sera mis en place :</p>
+        <ul class="chips"><li>Pour quelques meubles</li><li>À la demi-journée</li><li>À la journée complète</li></ul>
+      </div>
+      <div class="photos">
+        <img width="640" height="480" decoding="async" loading="lazy" src="monte-meubles-vue-etage.webp" data-fb="https://www.christophe-demenagements.com/wp-content/uploads/2017/12/camion-et-monte-meubles-640x480_c.jpg" alt="Monte-meubles déployé depuis un camion, vu d'un étage">
+        <img width="1200" height="900" decoding="async" loading="lazy" src="monte-meubles-nacelle.webp" data-fb="https://www.christophe-demenagements.com/wp-content/uploads/2017/12/monte-meuble-1.jpg" alt="Nacelle de monte-meubles chargée devant un balcon">
+        <img width="640" height="480" decoding="async" loading="lazy" src="monte-meubles-camion.webp" data-fb="https://www.christophe-demenagements.com/wp-content/uploads/2017/12/Monte-meuble-sur-camion.png" alt="Monte-meubles installé sur camion">
+      </div>
+    </article>
+
+    <article class="metier" id="materiel">
+      <div>
+        <h3>Camions et matériel</h3>
+        <p class="lead">Des poids lourds capitonnés de 10 à 120 m³ et du matériel adapté à vos besoins.</p>
+        <ul class="chips"><li>Penderies pour vêtements sur cintres</li><li>Barrels verres et assiettes</li><li>Papier bulles</li><li>Couvertures</li><li>Chariots</li><li>Housses de literie neuves</li></ul>
+      </div>
+      <div class="photos">
+        <img width="640" height="480" decoding="async" loading="lazy" src="camion-remorque-gentlemen.webp" data-fb="https://www.christophe-demenagements.com/wp-content/uploads/2017/12/photo-ensemble-Gentlemen56697af9883ed-640x480_c.jpg" alt="Ensemble camion et remorque aux couleurs des Gentlemen du Déménagement">
+        <img width="640" height="480" decoding="async" loading="lazy" src="camions-centre-ville.webp" data-fb="https://www.christophe-demenagements.com/wp-content/uploads/2017/12/camion-continental-640x480_c.jpg" alt="Camions Christophe en intervention en centre-ville">
+        <img width="640" height="480" decoding="async" loading="lazy" src="carton-penderie.webp" data-fb="https://www.christophe-demenagements.com/wp-content/uploads/2017/12/penderie52e7c5016e960-640x480_c.jpg" alt="Carton penderie Christophe rempli de vêtements sur cintres">
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- DEVIS -->
+<section class="block navy" id="devis">
+  <div class="wrap">
+    <h2>Visite technique et devis gratuit.</h2>
+    <p class="lead" style="color:#fff;margin-top:20px">Pour l'établissement d'un devis gratuit et sans engagement, nous vous proposons deux solutions.</p>
+    <div class="devis">
+      <div>
+        <h3>La visite technique</h3>
+        <p>Fixez un rendez-vous avec notre attaché commercial. La visite a pour but d'évaluer le cubage de votre déménagement, le type de prestation souhaitée, l'accès et la valeur de votre mobilier pour l'assurance. À l'issue de la visite, un devis personnalisé vous est envoyé par mail ou par courrier.</p>
+        <p><a class="btn btn-red" href="tel:0326851618">Prendre rendez-vous au 03 26 85 16 18</a></p>
+      </div>
+      <div>
+        <h3>L'inventaire en ligne</h3>
+        <p>Envoyez-nous l'inventaire détaillé de votre mobilier, pièce par pièce, avec vos adresses de chargement et de déchargement, l'étage, l'ascenseur et le besoin éventuel d'un monte-meubles.</p>
+        <p><a class="btn btn-white" href="#inventaire">Remplir la fiche inventaire</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INVENTAIRE / ESTIMATION -->
+<section class="block" id="inventaire">
+  <div class="wrap">
+    <div class="split">
+      <h2>Fiche inventaire : estimez votre déménagement.</h2>
+      <div>
+        <p class="lead">Indiquez vos adresses puis comptez votre mobilier pièce par pièce. Le volume estimé se calcule au fur et à mesure et nous recevons votre inventaire complet pour établir votre devis gratuit.</p>
+        <p class="muted">Seules les pièces que vous possédez sont à ouvrir. Pour un meuble coché « à démonter », nous prévoyons le démontage et le remontage.</p>
+      </div>
+    </div>
+
+    <div class="inv-grid">
+      <form id="invForm" novalidate data-endpoint="">
+        <label class="hp" aria-hidden="true">Ne pas remplir<input name="website" tabindex="-1" autocomplete="off"></label>
+        <fieldset>
+          <legend>Vos coordonnées</legend>
+          <div class="two">
+            <label>Nom *<input name="nom" required autocomplete="family-name"></label>
+            <label>Prénom<input name="prenom" autocomplete="given-name"></label>
+          </div>
+          <div class="two">
+            <label>Téléphone *<input name="tel" type="tel" required autocomplete="tel"></label>
+            <label>Mail *<input name="email" type="email" required autocomplete="email"></label>
+          </div>
+          <label>Période de déménagement<input name="periode" placeholder="Ex. : semaine du 12 octobre, ou fin novembre"></label>
+        </fieldset>
+
+        <div class="adr">
+          <fieldset data-adr="chargement">
+            <legend>Adresse de chargement</legend>
+            <div class="three">
+              <label>Ville *<input name="c_ville" required></label>
+              <label>CP<input name="c_cp" inputmode="numeric" maxlength="5"></label>
+              <label>Rue<input name="c_rue"></label>
+            </div>
+            <div class="radios"><span>Logement</span><label><input type="radio" name="c_type" value="Appartement">Appartement</label><label><input type="radio" name="c_type" value="Pavillon">Pavillon</label></div>
+            <label>Étage<input name="c_etage" placeholder="Ex. : 3e, ou R+1"></label>
+            <div class="radios"><span>Ascenseur</span><label><input type="radio" name="c_asc" value="Oui">Oui</label><label><input type="radio" name="c_asc" value="Non">Non</label></div>
+            <div class="radios"><span>Monte-meubles</span><label><input type="radio" name="c_mm" value="Oui">Oui</label><label><input type="radio" name="c_mm" value="Non">Non</label></div>
+          </fieldset>
+          <fieldset data-adr="dechargement">
+            <legend>Adresse de déchargement</legend>
+            <div class="three">
+              <label>Ville *<input name="d_ville" required></label>
+              <label>CP<input name="d_cp" inputmode="numeric" maxlength="5"></label>
+              <label>Rue<input name="d_rue"></label>
+            </div>
+            <div class="radios"><span>Logement</span><label><input type="radio" name="d_type" value="Appartement">Appartement</label><label><input type="radio" name="d_type" value="Pavillon">Pavillon</label></div>
+            <label>Étage<input name="d_etage" placeholder="Ex. : rez-de-chaussée"></label>
+            <div class="radios"><span>Ascenseur</span><label><input type="radio" name="d_asc" value="Oui">Oui</label><label><input type="radio" name="d_asc" value="Non">Non</label></div>
+            <div class="radios"><span>Monte-meubles</span><label><input type="radio" name="d_mm" value="Oui">Oui</label><label><input type="radio" name="d_mm" value="Non">Non</label></div>
+          </fieldset>
+        </div>
+
+        <fieldset style="border-top:0;padding-top:0">
+          <legend>Inventaire du mobilier</legend>
+          <div id="rooms"></div>
+          <div><button type="button" id="addRoom">+ Ajouter une chambre</button></div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Cartons et valeur</legend>
+          <div class="two">
+            <label>Nombre de cartons standards<input name="cartons_std" type="number" min="0" inputmode="numeric" data-vol="0.1"></label>
+            <label>Nombre de cartons livres<input name="cartons_livres" type="number" min="0" inputmode="numeric" data-vol="0.05"></label>
+          </div>
+          <label>Valeur totale de votre mobilier (pour l'assurance)<input name="valeur" placeholder="Ex. : 25 000 €"></label>
+          <label>Précisions utiles<textarea name="notes" placeholder="Accès difficile, stationnement, objets fragiles, garde-meubles souhaité…"></textarea></label>
+        </fieldset>
+      </form>
+
+      <aside class="recap" aria-live="polite">
+        <h3>Votre estimation</h3>
+        <dl>
+          <div><dt>Articles comptés</dt><dd id="invCount">0</dd></div>
+          <div><dt>Volume estimé</dt><dd id="invVol">0 m³</dd></div>
+        </dl>
+        <small>Volume indicatif calculé sur des cubages moyens par meuble. Le volume définitif est établi par nos équipes, au besoin lors d'une visite technique.</small>
+        <button class="btn btn-red" type="submit" form="invForm">Envoyer mon inventaire</button>
+        <button class="btn btn-ghost" type="button" id="invCopy">Copier le récapitulatif</button>
+        <button class="btn btn-ghost" type="button" id="invPrint">Imprimer la fiche</button>
+        <p id="invMsg" role="status"></p>
+        <p class="legal">Votre saisie est enregistrée sur cet appareil pour que vous puissiez la reprendre. Les informations envoyées servent uniquement à établir votre devis. <a href="https://www.christophe-demenagements.com/politique-de-confidentialite/">Politique de confidentialité</a></p>
+        <button type="button" id="invClear">Effacer ma saisie</button>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- BOUTIQUE -->
+<section class="block" id="boutique">
+  <div class="wrap split">
+    <div>
+      <h2>Boutique et conseils d'emballage.</h2>
+      <p class="lead" style="margin-top:22px">Nous mettons à votre disposition une gamme complète de produits d'emballage de déménagement.</p>
+      <p class="order"><span>Pour toute commande, prévenir 24 h avant votre passage. Règlement par chèque ou en espèces avec l'appoint.</span></p>
+      <p><a class="btn btn-line" href="tel:0326851618">Commander au 03 26 85 16 18</a></p>
+    </div>
+    <div>
+      <p class="muted" style="margin-bottom:18px">Commencez par emballer tous les objets dont vous vous servez le moins fréquemment.</p>
+      <details open>
+        <summary>Montage des cartons</summary>
+        <ul>
+          <li>Tous vos cartons doivent être montés à l'endroit : carton à l'envers, commencez par rabattre d'abord les 2 petits rabats puis les 2 plus grands par-dessus, sans les croiser. Appliquez une ou deux croix de scotch pour consolider le carton.</li>
+          <li>Une fois prêt à l'emploi, votre carton doit être rempli complètement, sans vide à l'intérieur, pour éviter l'écrasement. Vous pouvez combler les vides avec du papier.</li>
+          <li>Fermez votre carton avec l'adhésif sans croiser les rabats.</li>
+        </ul>
+      </details>
+      <details>
+        <summary>Repérage des cartons</summary>
+        <ul>
+          <li>Avec un marqueur, indiquez sur les 4 côtés du carton la destination finale de la pièce.</li>
+          <li>Vous pouvez numéroter chaque carton et, sur un bloc-notes, indiquer le contenu du carton n° 1, du carton n° 2…</li>
+          <li>Empilez les cartons faits dans une pièce. Mettez de côté les cartons contenant le fragile.</li>
+        </ul>
+      </details>
+      <details>
+        <summary>Lustres et lampes</summary>
+        <ul>
+          <li>Coupez le compteur électrique et déposez les lustres et les appliques. Il convient de laisser une douille avec une ampoule pour les successeurs.</li>
+          <li>Les abat-jour, une fois dévissés, doivent être protégés avec du papier bulles ; combinez-les les uns aux autres et regroupez-les dans un carton.</li>
+          <li>Les pieds de lampe doivent être protégés séparément avec du papier bulles et mis à part dans un carton.</li>
+        </ul>
+      </details>
+      <details>
+        <summary>Tableaux</summary>
+        <ul>
+          <li>Tableaux et sous-verre sont à décrocher et à protéger avec du papier bulles.</li>
+          <li>Un carton standard non monté peut être utilisé pour y glisser un tableau.</li>
+        </ul>
+      </details>
+      <details>
+        <summary>Meubles</summary>
+        <ul>
+          <li>Videz les tiroirs mais laissez-les en place.</li>
+          <li>Pour des petites commodes ou des chevets suffisamment solides, vous pouvez laisser les tiroirs pleins (sauf si des choses sont fragiles).</li>
+          <li>Sont à démonter : les meubles ne passant pas au chargement ou au déchargement, ou intransportables (bibliothèque, grande armoire, living…).</li>
+          <li>Avant le démontage, repérez bien les panneaux (haut/bas, gauche/droite).</li>
+          <li>Mettez de côté les vis, les chevilles et les clés nécessaires au remontage. Vous pouvez les emballer dans du papier bulles et les scotcher dans les meubles concernés.</li>
+          <li>Les panneaux peuvent être protégés par des couvertures ou du papier bulles.</li>
+        </ul>
+      </details>
+    </div>
+  </div>
+</section>
+
+<hr class="road">
+
+<!-- ISO -->
+<section class="block" id="iso">
+  <div class="wrap">
+    <div class="split">
+      <h2>ISO 9001 et 14001 : ce que la norme vous garantit.</h2>
+      <div>
+        <h3>Comment un prestataire de service obtient-il sa certification ?</h3>
+        <p>Les conditions de délivrance sont très strictes et sont définies par EIC (European Institut of Certification). Une fois la certification attribuée, des contrôles réguliers permettent de s'assurer que le prestataire mérite toujours la qualité ISO 9001 – 14001.</p>
+        <p>La société CHRISTOPHE DÉMÉNAGEMENTS a été certifiée en juin 2002 pour trois activités : l'accueil, l'exécution du déménagement et le service après-vente.</p>
+        <p><strong>C'est la première société de déménagement, et pour l'instant la seule de la région Champagne-Ardenne, à avoir reçu la qualité BCS ISO 9001 – 14001.</strong></p>
+      </div>
+    </div>
+    <h3 style="margin-top:56px">Que garantit la certification aux clients ?</h3>
+    <ul class="iso-grid">
+      <li><h4>L'accueil</h4><p>Elle témoigne de la qualité de l'accueil : l'information sur les conditions générales de vente, le détail des prestations, la déclaration de la valeur du mobilier…</p></li>
+      <li><h4>L'exécution du déménagement</h4><p>Elle atteste le bon déroulement de votre déménagement : respect des dates, formalités à la livraison, compétence des déménageurs, matériel utilisé…</p></li>
+      <li><h4>Le service après-vente</h4><p>Elle garantit un service après-vente : les différents recours après un litige…</p></li>
+    </ul>
+
+    <h2 class="h2s" id="services" style="margin-top:72px">Services +</h2>
+    <p class="muted" style="margin-top:8px">Nos partenaires pour faciliter votre installation.</p>
+    <div class="partners">
+      <a href="http://www.opemrelocation.com/" target="_blank" rel="noopener"><strong>OPEM Relocation</strong><span>Visiter opemrelocation.com</span></a>
+      <a href="https://www.oui-assistance.fr/" target="_blank" rel="noopener"><strong>OUI Assistance</strong><span>Visiter oui-assistance.fr</span></a>
+      <a href="https://www.gentlemen-demenagement.com/" target="_blank" rel="noopener"><strong>Les Gentlemen du Déménagement</strong><span>Le groupement national dont nous sommes membre depuis 2014</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- AVIS -->
+<section class="block" id="avis" style="background:#E9EDF4">
+  <div class="wrap avis-head">
+    <h2>Ils nous ont confié leur déménagement.</h2>
+    <a class="btn btn-line" href="https://www.google.com/maps?cid=13774131934720966700" target="_blank" rel="noopener">Voir et laisser un avis sur Google</a>
+  </div>
+  <div class="wrap"><p class="sub">Avis publiés sur Google</p></div>
+  <div class="strip" role="region" tabindex="0" aria-label="Avis Google, défilement horizontal">
+    <article><div class="stars" aria-label="5 étoiles sur 5">★★★★★</div><p>Un équipe et une prestation au top !</p><footer>Fabrice Guazzoni<small>Avis Google</small></footer></article>
+    <article><div class="stars" aria-label="5 étoiles sur 5">★★★★★</div><p>Très bonne société de déménageurs avec de très bonne équipe très compétente. Je suis toujours satisfaite.</p><footer>Muriele Marillier<small>Avis Google</small></footer></article>
+    <article><div class="stars" aria-label="5 étoiles sur 5">★★★★★</div><p>Prestation parfaite pour déménager mon piano, je recommande sans hésiter !</p><footer>Maxence Carpentier<small>Avis Google</small></footer></article>
+    <article><div class="stars" aria-label="5 étoiles sur 5">★★★★★</div><p>Rien à redire. Une équipe très sympathique et super pro. Zéro casse et zéro dégradation de meuble pendant le transport. Bravo à eux. Je recommande.</p><footer>Dav TH<small>Avis Google</small></footer></article>
+    <article><div class="stars" aria-label="5 étoiles sur 5">★★★★★</div><p>Entreprise très sérieuse et humaine.</p><footer>Laurence C<small>Avis Google</small></footer></article>
+    <article><div class="stars" aria-label="5 étoiles sur 5">★★★★★</div><p>Je recommande les yeux fermés, prestation parfaite, très très soigneux et rapide ! Encore merci !</p><footer>Camille<small>Avis Google</small></footer></article>
+  </div>
+  <div class="wrap"><p class="sub">Avis déposés sur notre site</p></div>
+  <div class="strip site" role="region" tabindex="0" aria-label="Avis du site, défilement horizontal">
+    <article><h3>Supers pros</h3><p>Déménagez tranquille… Tous vos meubles sont soigneusement emportés dans votre nouveau logement. Équipe efficace et très sympathique. Je vous conseille vivement cette entreprise pour un déménagement sans soucis.</p><footer>Michel<small>15 mai 2026</small></footer></article>
+    <article><h3>Une équipe au top</h3><p>Que ce soit du devis à la prestation finale, entreprise très sérieuse. Le déménagement a été fluide, efficace, une très bonne logistique. Équipe souriante, agréable, professionnelle. Je ne peux que recommander. Si besoin, je referai appel à eux. Merci !</p><footer>Rokicki<small>30 avril 2026</small></footer></article>
+    <article><h3>Juste parfait</h3><p>Les deux messieurs ont été rapides, méticuleux, efficaces. Dans un rythme fluide, ils ont assemblé le déménagement de ma mère dans un box trop petit, de façon idéale. Ils se sont montrés très sympathiques et rassurants.</p><footer>Martin<small>29 avril 2026</small></footer></article>
+    <article><h3>Déménagement professionnel</h3><p>Que ce soit les contacts réguliers avant déménagement, les échanges pendant le déménagement qui a duré une semaine de par son importance et nos contraintes, l'amabilité des salariés, la propreté et le travail de qualité, c'est une entreprise très professionnelle que vous pouvez solliciter les yeux fermés. Et la cerise sur le gâteau, ils sont en plus très compétitifs au regard des devis de mise en concurrence réalisés.</p><footer>GRDF<small>9 mars 2026</small></footer></article>
+    <article><h3>Satisfaction</h3><p>Depuis plusieurs années, nous avons confié nos déménagements à Christophe, et nous n'avons jamais été déçus, avec des prestations de qualité.</p><footer>Martin<small>18 février 2026</small></footer></article>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="block navy" id="contact">
+  <div class="wrap">
+    <h2>Accès et contact.</h2>
+    <div class="contact">
+      <form id="contactForm" novalidate data-endpoint="">
+        <label class="hp" aria-hidden="true">Ne pas remplir<input name="website" tabindex="-1" autocomplete="off"></label>
+        <div class="two">
+          <label>Votre nom *<input name="nom" required autocomplete="name"></label>
+          <label>Votre téléphone *<input name="tel" type="tel" required autocomplete="tel"></label>
+        </div>
+        <label>Votre email *<input name="email" type="email" required autocomplete="email"></label>
+        <label>Sujet
+          <select name="sujet">
+            <option>Demande de devis</option><option>Déménagement de particulier</option><option>Déménagement d'entreprise ou d'administration</option><option>International et DOM-TOM</option><option>Garde-meubles et self-stockage</option><option>Piano, coffre-fort, billard, voiture</option><option>Location de monte-meubles</option><option>Boutique : commande de cartons</option><option>Autre</option>
+          </select>
+        </label>
+        <label>Votre message<textarea name="message"></textarea></label>
+        <div><button class="btn btn-red" type="submit">Envoyer le message</button></div>
+        <p id="formMsg" role="status"></p>
+        <p class="legal">Les informations saisies servent uniquement à traiter votre demande. <a href="https://www.christophe-demenagements.com/politique-de-confidentialite/">Politique de confidentialité</a></p>
+      </form>
+      <address>
+        <ul class="coords" id="acces">
+          <li><span>Siège social</span><div>SAS Lorris CHRISTOPHE<br>11 rue de la Neuvillette<br>51370 Saint-Brice-Courcelles</div></li>
+          <li><span>Téléphone</span><a href="tel:0326851618">03 26 85 16 18</a></li>
+          <li><span>Fax</span><div>03 26 36 44 74</div></li>
+          <li><span>Email</span><a href="mailto:contact@christophe-demenagements.com">contact@christophe-demenagements.com</a></li>
+        </ul>
+        <div class="map-facade" id="mapBox" data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2603.473271446456!2d3.9902855158643296!3d49.26742877977206!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e9753ae1230305%3A0xbf278c042268402c!2sChristophe%20D%C3%A9m%C3%A9nagements!5e0!3m2!1sfr!2sfr!4v1641455721610!5m2!1sfr!2sfr">
+          <p>La carte Google Maps se charge à votre demande : aucun cookie tiers n'est déposé avant votre clic.</p>
+          <div class="acts"><button class="btn btn-white" type="button" id="mapLoad">Afficher la carte</button></div>
+        </div>
+        <p class="go-title">Venir au dépôt</p>
+        <ul class="go" aria-label="Itinéraire vers le dépôt">
+          <li><a href="https://www.google.com/maps/dir/?api=1&destination=11+rue+de+la+Neuvillette,+51370+Saint-Brice-Courcelles&destination_place_id=ChIJBQMj4Tp16UcRLEBoIgSMJ78&travelmode=driving" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7z" fill="#E2231A"/><circle cx="12" cy="9" r="2.6" fill="#fff"/></svg><span>Google Maps</span></a></li>
+          <li><a href="https://waze.com/ul?ll=49.2674,3.9914&navigate=yes" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 3C8.6 3 5.4 6.3 5.4 10.6c0 1.7-.5 2.6-1.5 3.3-.7.5-.5 1.5.3 1.8 1 .3 1.8.9 2.2 1.8.9 2 2.4 3.5 4.4 3.5h3.9c3.8 0 6.8-3.2 6.8-7.3V10c0-4-3.1-7-8.5-7z" fill="#33CCFF"/><circle cx="10.5" cy="10" r="1.1" fill="#12295B"/><circle cx="15.5" cy="10" r="1.1" fill="#12295B"/><path d="M10 13.2c1.6 1.5 4.4 1.5 6 0" stroke="#12295B" stroke-width="1.3" fill="none" stroke-linecap="round"/><circle cx="9.5" cy="19.5" r="1.4" fill="#12295B"/><circle cx="15" cy="20" r="1.4" fill="#12295B"/></svg><span>Waze</span></a></li>
+          <li><a href="https://maps.apple.com/?daddr=11+rue+de+la+Neuvillette,+51370+Saint-Brice-Courcelles&dirflg=d" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4" fill="#fff"/><path d="M3 13h18v4a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z" fill="#CFE6D4"/><path d="M3 7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v6H3z" fill="#E8F1FA"/><path d="M8 21 14 3" stroke="#F5B400" stroke-width="2.2"/><path d="M3 11h18" stroke="#9FB6CC" stroke-width="1.4"/><path d="M14 10l4 4" stroke="#E2231A" stroke-width="2" stroke-linecap="round"/></svg><span>Plans</span></a></li>
+        </ul>
+      </address>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="wordmark"><small>DÉMÉNAGEMENTS</small><span>Christophe</span></div>
+    <p>SAS Lorris CHRISTOPHE, société par actions simplifiée, 11 rue de la Neuvillette, 51370 Saint-Brice-Courcelles. Numéro SIRET (siège) : 38203838800031. Numéro TVA intracommunautaire : FR36382038388. Numéro RCS : Reims B 382 038 388. Activité : services de déménagement (4942Z). Gérant : M. Lorris CHRISTOPHE.</p>
+    <p>Entreprise soumise à la réglementation gouvernant le transport routier de marchandises, inscrite au registre des transporteurs routiers de marchandises, titulaire de la licence de transport international n° 2020/44/0000559 et de la licence de transport intérieur n° 2020/44/0000560, délivrées par l'État français, DREAL de la région du Grand Est.</p>
+    <p>Capital social : 18 300 €. Immatriculée au RCS le 06-06-1991. Enregistrée à l'INSEE le 01-07-1991.</p>
+    <div class="foot-links">
+      <a href="#demenagement">Déménagement à Reims et Saint-Brice-Courcelles</a>
+      <a href="#international">International et DOM‑TOM</a>
+      <a href="#garde-meubles">Garde-meubles et self-stockage</a>
+      <a href="#objets-lourds">Piano, coffre-fort, billard</a>
+      <a href="#monte-meubles">Location de monte-meubles</a>
+      <a href="#inventaire">Devis et inventaire</a>
+      <a href="#boutique">Cartons et emballage</a>
+      <a href="https://www.christophe-demenagements.com/mentions-legales/">Mentions légales</a>
+      <a href="https://www.christophe-demenagements.com/politique-de-confidentialite/">Politique de confidentialité</a>
+    </div>
+    <p>© <span id="year">2026</span> Déménagements Christophe, Les Gentlemen du Déménagement, Reims.</p>
+  </div>
+</footer>
+
+<div class="callbar">
+  <a class="btn btn-red" href="tel:0326851618">Appeler</a>
+  <a class="btn btn-white" href="#devis">Devis gratuit</a>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var $=function(s,c){return (c||document).querySelector(s)}, $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
+  var root=document.documentElement, intro=$('#intro');
+
+  /* ============ INTRO : moteur d'animation maison, sans dépendance ============ */
+  function mover(id,armBack){
+    var ax=armBack?-24:24;
+    return '<g id="'+id+'"><g class="flip">'
+      +'<line class="leg l1" x1="0" y1="-54" x2="0" y2="0"/><line class="leg l2" x1="0" y1="-54" x2="0" y2="0"/>'
+      +'<rect class="torso" x="-13" y="-102" width="26" height="54" rx="9"/>'
+      +'<path class="tie" d="M-8-101l8 4 8-4v10l-8-4-8 4z"/>'
+      +'<circle class="head" cx="0" cy="-115" r="12"/>'
+      +'<ellipse class="brim" cx="0" cy="-125" rx="18" ry="3.6"/><rect class="crown" x="-10" y="-137" width="20" height="12" rx="2"/><rect class="band" x="-10" y="-130" width="20" height="4"/>'
+      +'<line class="arm" x1="0" y1="-92" x2="'+ax+'" y2="-72"/>'
+      +'</g></g>';
+  }
+  var BOX='<g class="box"><rect x="14" y="-100" width="40" height="34" fill="#C9A06A" stroke="#9A7646" stroke-width="2"/><rect x="14" y="-86" width="40" height="6" fill="#E9D5B0"/></g>';
+  var BOXES='<g class="boxes"><rect x="12" y="-92" width="44" height="30" fill="#C9A06A" stroke="#9A7646" stroke-width="2"/><rect x="12" y="-80" width="44" height="5" fill="#E9D5B0"/><rect x="16" y="-120" width="36" height="28" fill="#D4AE7B" stroke="#9A7646" stroke-width="2"/><rect x="16" y="-109" width="36" height="5" fill="#E9D5B0"/></g>';
+  var SOFA='<g class="sofa"><rect x="-46" y="-118" width="92" height="34" rx="12" fill="#E0A526"/><rect x="-52" y="-96" width="104" height="30" rx="9" fill="#C98F17"/><rect x="-46" y="-66" width="8" height="8" fill="#55607A"/><rect x="38" y="-66" width="8" height="8" fill="#55607A"/></g>';
+  var CLIP='<g class="clip"><rect x="16" y="-92" width="22" height="28" rx="2" fill="#C9A06A"/><rect x="19" y="-88" width="16" height="21" fill="#fff"/><path d="M21-83h12M21-78h12M21-73h8" stroke="#55607A" stroke-width="1.6"/></g>';
+  var built=false;
+  function build(){
+    if(built)return;built=true;
+    $('#crew').innerHTML='<g id="duo"><g class="dflip"><g transform="translate(-64 0)">'+mover('dA',false)+'</g><g transform="translate(64 0)">'+mover('dB',true)+'</g>'+SOFA+'</g></g>'+mover('solo',false);
+    $('#solo .flip').insertAdjacentHTML('beforeend',BOX+BOXES);
+    $('#front').innerHTML=mover('chef',false);
+    $('#chef .flip').insertAdjacentHTML('beforeend',CLIP);
+  }
+
+  var EZ={lin:function(t){return t},
+    io:function(t){return t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2},
+    out:function(t){return 1-Math.pow(1-t,3)},
+    inn:function(t){return t*t},
+    back:function(t){var c=2.2;return 1+(c+1)*Math.pow(t-1,3)+c*Math.pow(t-1,2)},
+    bounce:function(t){var n=7.5625,d=2.75;if(t<1/d)return n*t*t;if(t<2/d)return n*(t-=1.5/d)*t+.75;if(t<2.5/d)return n*(t-=2.25/d)*t+.9375;return n*(t-=2.625/d)*t+.984375}};
+  var S={},TW=[],DUR=0,raf=0,t0=0,stepNow=-1,lastX={},fitKey='';
+  function st(sel){return S[sel]||(S[sel]={el:$(sel),v:{},i:{x:0,y:0,r:0,sx:1,sy:1,o:1,ox:0,oy:0}})}
+  function init(sel,p){var s=st(sel);for(var k in p)s.i[k]=p[k]}
+  function to(sel,t,d,p,e){st(sel);TW.push({s:sel,t:t,d:d,p:p,e:e||EZ.lin});DUR=Math.max(DUR,t+d)}
+  function set(sel,t,p){to(sel,t,0,p)}
+  function fx(t,d,fn,e){TW.push({t:t,d:d,fn:fn,e:e||EZ.lin});DUR=Math.max(DUR,t+d)}
+  function seek(time){
+    var k,s,i,tw,p;
+    for(k in S){s=S[k];for(i in s.i)s.v[i]=s.i[i]}
+    for(i=0;i<TW.length;i++){
+      tw=TW[i];if(tw.t>time)continue;
+      p=tw.d?Math.min(1,(time-tw.t)/tw.d):1;
+      if(tw.fn){tw.fn(tw.e(p),time);continue}
+      s=S[tw.s];for(k in tw.p)s.v[k]+=(tw.p[k]-s.v[k])*tw.e(p);
+    }
+    for(k in S){s=S[k];var v=s.v;
+      s.el.setAttribute('transform','translate('+v.x.toFixed(2)+' '+v.y.toFixed(2)+') rotate('+v.r.toFixed(2)+' '+v.ox+' '+v.oy+') scale('+v.sx+' '+v.sy+')');
+      s.el.setAttribute('opacity',v.o.toFixed(3));
+    }
+    // cycle de marche : les jambes bougent quand le personnage avance
+    [['#solo','#solo'],['#dA','#duo'],['#dB','#duo'],['#chef','#chef']].forEach(function(m){
+      var x=S[m[1]].v.x,mv=lastX[m[0]]!==undefined&&Math.abs(x-lastX[m[0]])>.05,a=mv?Math.sin(time*16)*24:0;lastX[m[0]]=x;
+      var l=$$(m[0]+' .leg');l[0].setAttribute('transform','rotate('+a+' 0 -54)');l[1].setAttribute('transform','rotate('+(-a)+' 0 -54)');
+    });
+  }
+  var CAPS=['On protège et on emballe.','On charge, sans une rayure.','En route vers votre nouvelle adresse.','Bienvenue chez vous.'];
+  var capT=0;
+  function setStep(i){
+    if(i===stepNow)return;stepNow=i;
+    $$('#steps li').forEach(function(li,k){li.className=k<i?'done':(k===i?'on':'')});
+    $$('#ms circle').forEach(function(c,k){c.setAttribute('class','ms'+(k<i?' done':(k===i?' on':'')))});
+    var c=$('#caption');clearTimeout(capT);
+    if(i===0){c.textContent=CAPS[0];c.classList.remove('swap');return}
+    c.classList.add('swap');capT=setTimeout(function(){c.textContent=CAPS[i];c.classList.remove('swap')},180);
+  }
+  // le camion du schéma avance en continu pendant toute l'intro ; il atteint chaque jalon quand l'étape commence
+  function routeProgress(time,marks){
+    var k=0;while(k<3&&time>=marks[k+1])k++;
+    var a=marks[k],b=marks[k+1],p=b>a?Math.min(1,(time-a)/(b-a)):1;
+    return (k+p)/3;
+  }
+  function fitScene(){
+    var svg=$('#scene'),r=svg.getBoundingClientRect(),asp=r.height>0?r.width/r.height:2.67;
+    var w=Math.max(800,Math.min(3000,Math.round(600*asp)));
+    return {w:w,narrow:w<1600,k:Math.max(0,Math.min(1,(w-800)/800))};
+  }
+  function lerpBox(a,b,p){return a.map(function(n,i){return (n+(b[i]-n)*p).toFixed(1)}).join(' ')}
+
+  function script(){
+    TW=[];DUR=0;S={};
+    var svg=$('#scene'),route=$('#routeFg'),L=route.getTotalLength(),dot=$('#routeDot'),D=3200,R=33;
+    // viewBox calée sur les proportions réelles de l'écran : rien n'est rogné, ni en haut ni sur les côtés
+    var fit=fitScene(),w=fit.w,cS=640+160*fit.k,cE=1100-300*fit.k,cM=(cS+cE)/2;
+    var cam=[[cS-w/2,0,w,600],[cM-w/2,0,w,600],[cE-w/2,0,w,600]];
+    svg.setAttribute('viewBox',cam[0].join(' '));
+    route.setAttribute('stroke-dasharray',L);
+    $('#ms').innerHTML=[0,1,2,3].map(function(k){var pt=route.getPointAtLength(L*k/3);return '<circle class="ms" cx="'+pt.x.toFixed(1)+'" cy="'+pt.y.toFixed(1)+'" r="9"/><text class="mn" x="'+pt.x.toFixed(1)+'" y="'+(pt.y+4).toFixed(1)+'">'+(k+1)+'</text>'}).join('');
+    ['#near','#far','#clouds','#truckBody','#heads','#pinA','#pinB','#ramp','#solo','#solo .flip','#solo .box','#solo .boxes','#duo','#duo .dflip','#duo .sofa','#chef','#chef .flip','#chef .clip','#w1 .wheel','#w2 .wheel','#w3 .wheel'].forEach(st);
+    init('#heads',{o:0});init('#pinA',{sx:0,sy:0});init('#pinB',{y:-320,o:0});init('#ramp',{ox:600,oy:440});
+    init('#solo',{x:420,y:500,o:0});init('#duo',{x:420,y:500,o:0});
+    init('#solo .box',{o:0});init('#solo .boxes',{o:0});init('#duo .sofa',{o:0});
+    init('#chef',{x:1200,y:512});init('#chef .flip',{sx:-1});
+
+    fx(0,.4,function(p){svg.style.opacity=p});
+    to('#pinA',.2,.45,{sx:1,sy:1},EZ.back);
+
+    // aller (et retour éventuel) : porte -> rampe -> caisse du camion
+    function trip(who,flip,item,t,inX,s,back){
+      set(item,t,{o:1});set(flip,t,{sx:1});set(who,t,{x:420,y:500});
+      to(who,t,.12,{o:1});
+      to(who,t,.5*s,{x:515});t+=.5*s;
+      to(who,t,.5*s,{x:600,y:440});t+=.5*s;
+      to(who,t,.45*s,{x:inX});t+=.45*s;
+      set(item,t,{o:0});
+      if(!back){set(who,t,{o:0});return t}
+      set(flip,t,{sx:-1});
+      to(who,t,.35*s,{x:600});t+=.35*s;
+      to(who,t,.35*s,{x:515,y:500});t+=.35*s;
+      to(who,t,.4*s,{x:420});to(who,t+.4*s-.12,.12,{o:0});
+      return t+.4*s;
+    }
+    var a=trip('#solo','#solo .flip','#solo .box',.3,690,.6,true);
+    trip('#duo','#duo .dflip','#duo .sofa',.9,730,.75,false);
+    var tStep1=1.0;
+    var tLoad=trip('#solo','#solo .flip','#solo .boxes',a+.05,700,.6,false);
+    fx(.5,tLoad-.5,function(p,time){S['#chef .clip'].v.y=Math.sin(time*9)*3});
+
+    // fermeture de la rampe, le chef d'équipe monte en cabine
+    var tGo=tLoad+.05;
+    to('#ramp',tGo,.4,{r:-55},EZ.io);to('#ramp',tGo+.35,.15,{o:0});
+    set('#chef .flip',tGo,{sx:1});set('#chef .clip',tGo,{o:0});
+    to('#chef',tGo,.4,{x:1082,y:504});
+    to('#chef',tGo+.4,.3,{y:440,sx:.6,sy:.6,o:0},EZ.inn);
+    to('#heads',tGo+.6,.2,{o:1});
+
+    // trajet
+    var tDr=tGo+.7,dur=2.4;
+    to('#near',tDr,dur,{x:-D},EZ.io);to('#far',tDr,dur,{x:-D*.26},EZ.io);to('#clouds',tDr,dur,{x:-D*.08},EZ.io);
+    ['#w1 .wheel','#w2 .wheel','#w3 .wheel'].forEach(function(w){to(w,tDr,dur,{r:D/(2*Math.PI*R)*360},EZ.io)});
+    fx(tDr,dur,function(p,time){var amp=Math.sin(Math.PI*p);S['#truckBody'].v.y=-3*amp*Math.abs(Math.sin(time*19))});
+    if(fit.narrow){
+      fx(tDr-.3,1,function(p){svg.setAttribute('viewBox',lerpBox(cam[0],cam[1],p))},EZ.io);
+      fx(tDr+dur-.9,1,function(p){svg.setAttribute('viewBox',lerpBox(cam[1],cam[2],p))},EZ.io);
+    }
+
+    // arrivée
+    var tAr=tDr+dur;
+    set('#truckBody',tAr-.2,{ox:1092,oy:470});
+    to('#truckBody',tAr-.2,.2,{r:.7},EZ.out);to('#truckBody',tAr,.4,{r:0},EZ.back);
+    to('#pinB',tAr,.6,{y:0},EZ.bounce);to('#pinB',tAr,.15,{o:1});
+
+    // final : le logo
+    var cur=$('#curtain'),wm=$('#curtain .wordmark'),cp=$('#curtain p');
+    fx(0,0,function(){cur.style.visibility='hidden';wm.style.opacity=cp.style.opacity=0});
+    fx(tAr+.8,.55,function(p){cur.style.visibility='visible';cur.style.transform='translateY('+(101*(1-p))+'%)'},EZ.io);
+    fx(tAr+1.1,.5,function(p){wm.style.opacity=p;wm.style.transform='translateY('+(40*(1-p))+'px)'},EZ.out);
+    fx(tAr+1.25,.45,function(p){cp.style.opacity=p;cp.style.transform='translateY('+(20*(1-p))+'px)'},EZ.out);
+    DUR=tAr+2.3;
+    // étapes et schéma de trajet pilotés par le temps, une seule source de vérité
+    var marks=[0,tStep1,tGo+.3,tAr-.1];
+    fx(0,DUR,function(p,time){
+      var i=0;while(i<3&&time>=marks[i+1])i++;
+      setStep(i);
+      var q=routeProgress(time,marks),pt=route.getPointAtLength(q*L);
+      route.setAttribute('stroke-dashoffset',L*(1-q));
+      dot.setAttribute('transform','translate('+pt.x.toFixed(1)+' '+(pt.y-6).toFixed(1)+')');
+    });
+    TW.sort(function(x,y){return x.t-y.t});
+  }
+
+  var site=$$('header.site,main,footer.site,.callbar');
+  function endIntro(instant){
+    cancelAnimationFrame(raf);raf=0;
+    root.classList.remove('intro-on');
+    site.forEach(function(n){n.removeAttribute('inert')});
+    if(instant){intro.style.display='none';return}
+    intro.style.transition='transform .7s cubic-bezier(.7,0,.2,1)';intro.style.transform='translateY(-100%)';
+    setTimeout(function(){intro.style.display='none'},720);
+  }
+  function playIntro(){
+    build();
+    intro.style.transition='none';intro.style.transform='none';intro.style.display='flex';
+    root.classList.add('intro-on');
+    site.forEach(function(n){n.setAttribute('inert','')});
+    stepNow=-1;lastX={};
+    fitKey=Math.round(window.innerWidth/50)+'x'+Math.round(window.innerHeight/50);
+    script();seek(0);
+    try{$('#skip').focus({preventScroll:true})}catch(e){}
+    t0=performance.now();
+    (function frame(now){
+      var t=(now-t0)/1000;
+      if(t>=DUR){seek(DUR);endIntro(false);return}
+      seek(t);raf=requestAnimationFrame(frame);
+    })(t0);
+  }
+  window.addEventListener('resize',function(){if(!root.classList.contains('intro-on'))return;var k=Math.round(window.innerWidth/50)+'x'+Math.round(window.innerHeight/50);if(k===fitKey)return;fitKey=k;var now=(performance.now()-t0)/1000;var fit=fitScene(),w=fit.w,cS=640+160*fit.k,cE=1100-300*fit.k;var c=now<DUR*.5?cS:cE;$('#scene').setAttribute('viewBox',[c-w/2,0,w,600].join(' '))});
+  window.__intro={seek:function(t){cancelAnimationFrame(raf);raf=0;seek(t)},dur:function(){return DUR}};
+
+  // l'intro se joue à chaque chargement de la page (sauf préférence système de mouvement réduit)
+  var reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduced){endIntro(true)}else{playIntro()}
+  function live(){return root.classList.contains('intro-on')}
+  intro.addEventListener('click',function(){if(live())endIntro(false)});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&live())endIntro(false)});
+  $('#replay').addEventListener('click',function(){window.scrollTo(0,0);playIntro()});
+
+  /* ============ SITE ============ */
+  // progression de lecture : le camion avance avec le scroll
+  var bar=$('#progress'),docH=1,tick=0;
+  function measure(){docH=Math.max(1,document.documentElement.scrollHeight-window.innerHeight);paint()}
+  var barI=$('i',bar),barT=$('svg',bar);
+  function paint(){tick=0;var p=Math.min(1,window.scrollY/docH);barI.style.transform='scaleX('+p+')';barT.style.transform='translateX('+(p*window.innerWidth)+'px)'}
+  window.addEventListener('scroll',function(){if(!tick)tick=requestAnimationFrame(paint)},{passive:true});
+  window.addEventListener('resize',measure);window.addEventListener('load',measure);
+  if(window.ResizeObserver)new ResizeObserver(measure).observe(document.body);
+  measure();
+
+  // menu mobile
+  var burger=$('#burger'),nav=$('#nav');
+  burger.addEventListener('click',function(){var o=nav.classList.toggle('open');burger.setAttribute('aria-expanded',o);burger.setAttribute('aria-label',o?'Fermer le menu':'Ouvrir le menu')});
+  $$('a',nav).forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open');burger.setAttribute('aria-expanded','false')})});
+
+  // onglets particuliers / entreprises
+  var tabs=$$('[role=tab]');
+  function selectTab(t){tabs.forEach(function(b){var on=b===t;b.setAttribute('aria-selected',on);b.tabIndex=on?0:-1;$('#'+b.getAttribute('aria-controls')).hidden=!on})}
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){selectTab(t)});
+    t.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowLeft'){var n=tabs[(i+(e.key==='ArrowRight'?1:tabs.length-1))%tabs.length];n.focus();selectTab(n)}});
+  });
+
+  /* ============ FORMULAIRES : validation et envoi communs ============ */
+  function checkFields(form,names,msg,text){
+    var f=form.elements,miss=names.filter(function(n){var bad=!f[n].value.trim();f[n].setAttribute('aria-invalid',bad);return bad});
+    if(miss.length){msg.textContent=text;f[miss[0]].focus();return false}
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.email.value)){f.email.setAttribute('aria-invalid','true');msg.textContent="L'adresse mail saisie est incomplète.";f.email.focus();return false}
+    return true;
+  }
+  // production : renseigner data-endpoint sur le <form> (Formspree, route API…). Sans endpoint : ouverture de la messagerie.
+  function deliver(form,subject,text,msg,okText,done){
+    var ep=form.dataset.endpoint;
+    if(ep){
+      msg.textContent='Envoi en cours…';
+      fetch(ep,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify({_subject:subject,email:form.elements.email.value,message:text})})
+        .then(function(r){if(!r.ok)throw 0;msg.textContent=okText;if(done)done()})
+        .catch(function(){msg.textContent="L'envoi a échoué. Appelez-nous au 03 26 85 16 18 ou réessayez."});
+      return;
+    }
+    var long=text.length>1700,body=long?'(Récapitulatif complet copié dans votre presse-papiers : collez-le ici.)\n\n'+text.slice(0,1500)+'\n[…]':text;
+    if(long&&typeof copy==='function')copy(text).then(function(){},function(){});
+    location.href='mailto:contact@christophe-demenagements.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+    msg.textContent='Votre messagerie s\'ouvre avec le message prêt à envoyer.';
+  }
+
+  var form=$('#contactForm'),msg=$('#formMsg');
+  form.addEventListener('input',function(e){e.target.removeAttribute('aria-invalid')});
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var f=form.elements;if(f.website.value)return;
+    if(!checkFields(form,['nom','tel','email'],msg,'Renseignez votre nom, votre téléphone et votre email pour envoyer le message.'))return;
+    deliver(form,f.sujet.value+' - '+f.nom.value,'Nom : '+f.nom.value+'\nTéléphone : '+f.tel.value+'\nEmail : '+f.email.value+'\n\n'+f.message.value,msg,'Message envoyé. Nous vous répondons rapidement.');
+  });
+
+  /* ============ ESTIMATION RAPIDE (hero) ============ */
+  var VOL={'Studio':[10,15],'T2':[20,25],'T3':[30,35],'T4':[40,50],'T5 et plus':[50,60],'Maison':[60,90]};
+  var TRIP={'Reims et environs':'Voyage urbain, dans un périmètre de 10 km.','Ailleurs en France':'Voyage spécial à vos dates, ou groupage à tarif avantageux.','International, DOM‑TOM':'Container maritime, de porte à porte, sur devis personnalisé.'};
+  var quick=$('#quick');
+  function quickUpdate(){
+    var l=quick.elements.logement.value,d=quick.elements.dest.value,v=VOL[l];
+    $('#quickVol').textContent=v[0]+' à '+v[1]+' m³';$('#quickTrip').textContent=TRIP[d];
+  }
+  quick.addEventListener('change',quickUpdate);quickUpdate();
+  $('#quickCall').addEventListener('click',function(){
+    var l=quick.elements.logement.value,d=quick.elements.dest.value,f=form.elements;
+    f.sujet.value='Demande de devis';
+    if(!f.message.value)f.message.value='Bonjour, je souhaite être rappelé pour un devis.\nLogement : '+l+' ('+$('#quickVol').textContent+' estimés)\nDestination : '+d;
+    $('#contact').scrollIntoView();setTimeout(function(){f.nom.focus({preventScroll:true})},600);
+  });
+
+  /* ============ CARTE : chargée au clic (aucun cookie Google avant consentement) ============ */
+  $('#mapLoad').addEventListener('click',function(){
+    var b=$('#mapBox'),i=document.createElement('iframe');
+    i.className='map';i.title="Plan d'accès Déménagements Christophe";i.loading='lazy';i.referrerPolicy='no-referrer-when-downgrade';
+    i.src=b.dataset.src;b.replaceWith(i);
+  });
+
+  /* ============ FICHE INVENTAIRE ============ */
+  // [nom, volume unitaire indicatif en m3, champs complémentaires]
+  // champs : dim=dimensions, portes, tiroirs, metres, poids, vol, type=chevillée/moderne, cong=bac/tiroirs, txt=description libre
+  var ROOMS=[
+   ['Entrée',[['Meuble à chaussures',.3],['Porte-manteau',.2],['Autres',.3,'txt']]],
+   ['Salon',[['Canapé 2 places',1.5],['Canapé 3 places',2],['Fauteuil',.8],['Table basse',.4],['Bibliothèque (meuble)',1,'dim'],['Bureau',.8],['Armoire',1.5,'type portes'],['Buffet',1.2,'dim'],['Chaise',.2],['Commode',.6,'tiroirs'],["Armoire d'angle",1.5],['Secrétaire',.7],['Tapis',.2],['Lampadaire',.2],['Lustre',.2],['Meuble de télévision',.6],['Miroir',.1],['Tableau',.1,'dim'],['Nécessaire de cheminée',.1],['Plante',.3],['Étagères',.4,'dim'],['Autres',.3,'txt']]],
+   ['Salle à manger',[['Table',1],['Chaise',.2],['Vaisselier',1.5],['Buffet',1.2,'dim'],['Lustre',.2],['Plante',.3],['Miroir',.1],['Vitrine',1],['Armoire',1.5,'type portes'],['Tableau',.1],['Table roulante',.3],['Tapis',.2]]],
+   ['Cuisine',[['Buffet',1.2,'dim'],['Table',.8],['Tabouret',.1],['Chaise',.2],['Chaise haute pour enfant',.3],['Élément haut',.4],['Élément bas',.5],['Vaisselier',1.5],['Autres',.3,'txt']]],
+   ['Chambre',[['Armoire',1.5,'type portes'],['Bureau',.8],['Chaise',.2],['Coiffeuse',.6],['Commode',.6,'tiroirs'],['Glace',.1],['Lit double',1.5],['Lit simple',1],['Mezzanine',2],['Penderie',.5,'metres'],['Table',.6],['Table de chevet',.2],['Tapis',.2]]],
+   ['Chambre enfant',[['Armoire',1.5,'type portes'],['Bureau',.6],['Chaise',.2],['Table de chevet',.2],['Coffre à jouets',.3],['Commode',.6,'tiroirs'],['Glace',.1],['Lit bébé',.6],['Lit enfant',.8],['Lit simple',1],['Lit pont',2.5],['Parc pour enfant',.3],['Penderie',.5,'metres'],['Table à langer',.4],['Autres',.3,'txt']]],
+   ['Bureau',[['Plante',.3],['Bibliothèque',1,'dim'],['Bureau ou commode',.8],['Chaise',.2],['Fauteuil',.5],['Lampe de bureau',.05],['Lustre',.2],['Miroir',.1],['Ordinateur',.15],['Autres',.3,'txt']]],
+   ['Salle de bain',[['Commode',.6,'tiroirs'],['Miroir',.1],['Autres',.3,'txt']]],
+   ['Électroménager',[['Aspirateur',.1],['Congélateur',.8,'cong'],['Cuisinière',.5],['Four',.3],['Frigo / Congélateur',1],['Lave-vaisselle',.5],['Machine à coudre portative',.1],['Machine à coudre sur table',.5],['Machine à laver',.5],['Micro-ondes',.1],['Réfrigérateur',.8],['Rôtissoire',.1],['Sèche-linge',.5],['Ventilateur',.1],['Autres',.3,'txt']]],
+   ['Garage et meubles de jardin',[['Tondeuse',.4],['Brouette',.4],['Chaise longue',.3],['Échelle',.2],['Meuble de jardin',.6],['Outil de jardin',.05],["Tuyau d'arrosage",.1],['Autres',.3,'txt']]],
+   ['Loisirs',[['Barbecue',.4],['Portique ou balançoire',1.5],['Bicyclette',.5],['Chaise de camping',.1],['Lit pliant',.3],['Planche à voile',.5],['Sac de golf et clubs',.2],["Vélo d'appartement",.6],['Moto',2],['Table de camping',.3],['Autres',.3,'txt']]],
+   ['Particularités',[['Piano droit',1.5],['Piano 1/4 queue',2.5],['Piano à queue',3.5],['Baby-foot',1],['Frigo américain',1.5],['Coffre-fort',.5,'poids'],['Aquarium',.4,'vol'],['Billard',2.5],['Table de ping-pong',1],['Autres',.3,'txt']]]
+  ];
+  var EX={dim:['Dimensions','L x H x P en cm'],portes:['Nombre de portes','Ex. : 3'],tiroirs:['Nombre de tiroirs','Ex. : 4'],metres:['Nombre de mètres','Ex. : 2 m'],poids:['Poids','Ex. : 250 kg'],vol:['Volume','Ex. : 200 litres'],txt:['Lesquels ?','Décrivez les objets']};
+  var invForm=$('#invForm'),roomsEl=$('#rooms'),invMsg=$('#invMsg'),SAVE='dc_inventaire',extra=0;
+  function esc(t){return t.replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;')}
+  function num(v){v=parseInt(v,10);return isNaN(v)||v<0?0:v}
+  function rowsHTML(id,items){
+    return items.map(function(it,ii){
+      var k='i'+id+'_'+ii, ex=(it[2]||'').split(' ').filter(Boolean).map(function(e){
+        if(e==='type')return '<label><input type="radio" name="'+k+'_type" value="Chevillée">Chevillée</label><label><input type="radio" name="'+k+'_type" value="Moderne">Moderne</label>';
+        if(e==='cong')return '<label><input type="radio" name="'+k+'_cong" value="Bac">Bac</label><label><input type="radio" name="'+k+'_cong" value="Tiroirs">Tiroirs</label>';
+        return '<input type="text" name="'+k+'_'+e+'" aria-label="'+EX[e][0]+'" placeholder="'+EX[e][0]+' ('+EX[e][1]+')">';
+      }).join('');
+      return '<div class="row" data-name="'+esc(it[0])+'" data-vol="'+it[1]+'" data-key="'+k+'"><span class="nm">'+esc(it[0])+'</span>'
+        +'<span class="qty"><button type="button" data-d="-1" aria-label="Retirer un article : '+esc(it[0])+'">−</button><input type="number" min="0" max="99" value="0" name="'+k+'" aria-label="Nombre : '+esc(it[0])+'"><button type="button" data-d="1" aria-label="Ajouter un article : '+esc(it[0])+'">+</button></span>'
+        +'<div class="ex">'+ex+'<label><input type="checkbox" name="'+k+'_opt" value="oui">À démonter et remonter</label></div></div>';
+    }).join('');
+  }
+  // les lignes d'une pièce ne sont créées qu'à sa première ouverture (130 lignes évitées au chargement)
+  function fill(room){
+    if(room.dataset.done)return;room.dataset.done='1';
+    $('.rows',room).innerHTML=rowsHTML(room.dataset.id,ROOMS[+room.dataset.src][1]);
+  }
+  function makeRoom(id,src,name){
+    var d=document.createElement('details');d.className='room';d.dataset.id=id;d.dataset.src=src;
+    d.innerHTML='<summary>'+esc(name)+'<em></em></summary><div class="rows"></div>';
+    d.addEventListener('toggle',function(){if(d.open)fill(d)});
+    return d;
+  }
+  ROOMS.forEach(function(r,ri){roomsEl.appendChild(makeRoom(String(ri),ri,r[0]))});
+  function addChambre(){
+    extra++;
+    var all=$$('.room',roomsEl).filter(function(r){return r.dataset.src==='4'}),d=makeRoom('x'+extra,4,'Chambre '+(extra+1));
+    all[all.length-1].after(d);return d;
+  }
+  $('#addRoom').addEventListener('click',function(){var d=addChambre();d.open=true;fill(d);$('summary',d).focus();save()});
+
+  function refresh(){
+    var n=0,vol=0;
+    $$('.room',roomsEl).forEach(function(room){
+      var rn=0;
+      $$('.row',room).forEach(function(row){var q=num($('.qty input',row).value);row.classList.toggle('on',q>0);rn+=q;vol+=q*parseFloat(row.dataset.vol)});
+      var em=$('summary em',room);em.textContent=rn;em.classList.toggle('on',rn>0);n+=rn;
+    });
+    $$('input[data-vol]',invForm).forEach(function(i){vol+=num(i.value)*parseFloat(i.dataset.vol)});
+    $('#invCount').textContent=n;
+    $('#invVol').textContent=(Math.round(vol*2)/2).toString().replace('.',',')+' m³';
+    return {n:n,vol:vol};
+  }
+
+  // sauvegarde automatique : la saisie survit à un rechargement ou à une fermeture d'onglet
+  var saveT=0;
+  function save(){
+    clearTimeout(saveT);saveT=setTimeout(function(){
+      var v={};
+      $$('input,textarea,select',invForm).forEach(function(i){
+        if(!i.name||i.name==='website')return;
+        if(i.type==='radio'||i.type==='checkbox'){if(i.checked)v[i.name+(i.type==='radio'?'':'#')]=i.value}
+        else if(i.value&&i.value!=='0')v[i.name]=i.value;
+      });
+      try{localStorage.setItem(SAVE,JSON.stringify({extra:extra,v:v}))}catch(e){}
+    },400);
+  }
+  function restore(){
+    var d=null;try{d=JSON.parse(localStorage.getItem(SAVE))}catch(e){}
+    if(!d||!d.v)return;
+    for(var i=0;i<(d.extra||0);i++)addChambre();
+    Object.keys(d.v).forEach(function(k){var m=/^i([^_]+)_/.exec(k);if(m){var r=$('.room[data-id="'+m[1]+'"]',roomsEl);if(r)fill(r)}});
+    Object.keys(d.v).forEach(function(k){
+      var cb=k.slice(-1)==='#',name=cb?k.slice(0,-1):k,els=$$('[name="'+name+'"]',invForm);
+      els.forEach(function(el){if(el.type==='radio'||el.type==='checkbox'){if(el.value===d.v[k])el.checked=true}else el.value=d.v[k]});
+    });
+  }
+  var salon=$('.room[data-id="1"]',roomsEl);salon.open=true;fill(salon);
+  restore();refresh();
+
+  roomsEl.addEventListener('click',function(e){
+    var b=e.target.closest('.qty button');if(!b)return;
+    var i=$('input',b.parentNode);i.value=Math.min(99,Math.max(0,num(i.value)+parseInt(b.dataset.d,10)));refresh();save();
+  });
+  invForm.addEventListener('input',function(e){if(e.target.removeAttribute)e.target.removeAttribute('aria-invalid');refresh();save()});
+  invForm.addEventListener('change',save);
+  $('#invClear').addEventListener('click',function(){
+    if(!window.confirm('Effacer toute votre saisie ?'))return;
+    try{localStorage.removeItem(SAVE)}catch(e){}
+    invForm.reset();$$('.room',roomsEl).forEach(function(r){if(r.dataset.id.charAt(0)==='x')r.remove()});extra=0;refresh();invMsg.textContent='Saisie effacée.';
+  });
+
+  function recapText(){
+    var f=invForm.elements,v=function(n){return f[n]&&f[n].value?String(f[n].value).trim():''},t=refresh(),L=[];
+    L.push('FICHE INVENTAIRE','','Nom : '+v('nom')+' '+v('prenom'),'Téléphone : '+v('tel'),'Mail : '+v('email'),'Période : '+(v('periode')||'non précisée'),'');
+    [['c','CHARGEMENT'],['d','DÉCHARGEMENT']].forEach(function(a){
+      var p=a[0]+'_';
+      L.push(a[1]+' : '+[v(p+'rue'),v(p+'cp'),v(p+'ville')].filter(Boolean).join(', '));
+      L.push('  '+[v(p+'type'),v(p+'etage')&&('étage '+v(p+'etage')),v(p+'asc')&&('ascenseur : '+v(p+'asc')),v(p+'mm')&&('monte-meubles : '+v(p+'mm'))].filter(Boolean).join(' | '));
+    });
+    L.push('');
+    $$('.room',roomsEl).forEach(function(room){
+      var rows=$$('.row.on',room);if(!rows.length)return;
+      L.push($('summary',room).firstChild.textContent.toUpperCase());
+      rows.forEach(function(row){
+        var k=row.dataset.key,d=[];
+        $$('.ex input',row).forEach(function(i){
+          if(i.type==='text'&&i.value.trim())d.push(i.getAttribute('aria-label').toLowerCase()+' : '+i.value.trim());
+          if(i.type==='radio'&&i.checked)d.push(i.value.toLowerCase());
+          if(i.type==='checkbox'&&i.checked)d.push('à démonter et remonter');
+        });
+        L.push('  '+num(f[k].value)+' x '+row.dataset.name+(d.length?' ('+d.join(', ')+')':''));
+      });
+    });
+    L.push('','Cartons standards : '+num(v('cartons_std')),'Cartons livres : '+num(v('cartons_livres')),'Valeur du mobilier : '+(v('valeur')||'non précisée'));
+    if(v('notes'))L.push('Précisions : '+v('notes'));
+    L.push('','Total : '+t.n+' articles, volume indicatif '+$('#invVol').textContent);
+    return L.join('\n');
+  }
+  function copy(text){
+    if(navigator.clipboard&&navigator.clipboard.writeText)return navigator.clipboard.writeText(text);
+    return new Promise(function(ok,ko){var ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy')?ok():ko()}catch(e){ko(e)}document.body.removeChild(ta)});
+  }
+  $('#invCopy').addEventListener('click',function(){copy(recapText()).then(function(){invMsg.textContent='Récapitulatif copié.'},function(){invMsg.textContent='Copie impossible sur ce navigateur. Utilisez « Imprimer la fiche ».'})});
+  $('#invPrint').addEventListener('click',function(){$$('.room',roomsEl).forEach(function(r){if($('.row.on',r))r.open=true});window.print()});
+  invForm.addEventListener('submit',function(e){
+    e.preventDefault();
+    var f=invForm.elements;if(f.website.value)return;
+    if(!checkFields(invForm,['nom','tel','email','c_ville','d_ville'],invMsg,'Renseignez nom, téléphone, mail et les deux villes pour envoyer votre inventaire.'))return;
+    if(!refresh().n&&!num(f.cartons_std.value)){invMsg.textContent='Ajoutez au moins un meuble ou un carton à votre inventaire.';return}
+    deliver(invForm,'Fiche inventaire - '+f.nom.value.trim()+' - '+f.c_ville.value.trim()+' vers '+f.d_ville.value.trim(),recapText(),invMsg,'Inventaire envoyé. Nous vous recontactons avec votre devis.',function(){try{localStorage.removeItem(SAVE)}catch(e){}});
+  });
+
+  $('#year').textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
